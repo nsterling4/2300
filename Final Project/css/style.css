@@ -5,7 +5,7 @@ html, body {
     font-size: 100%;
     margin: 0;
     padding: 0;
-    background-color: #9882ee;
+    background-color: #F7F7F7; /*Light Grey*/
     vertical-align: baseline;
 }
 
@@ -13,18 +13,18 @@ html, body {
 
  h1 {
 
-    color: black; 
+    background: #B31B1B; /*Cornell Red*/
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
     margin: 0;
     width: 100%;
-    background: #E7CC8F; /*Peach*/
+    color: #F7F7F7; /*Light Grey*/
 }
 
  h2 {
 
-    color: black; 
+    color: #B31B1B; /*Cornell Red*/
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -33,8 +33,8 @@ html, body {
 }
 
 footer {
-    background: #E7CC8F; /*Peach*/
-    color: black; 
+    color: #F7F7F7; /*Light Grey*/
+    background: #B31B1B; /*Cornell Red*/
     margin-bottom: 0;
     width: 100%;
     padding: 3px;
@@ -42,7 +42,10 @@ footer {
 
 footer p {
     text-align: center;
+    margin: 10px;
 }
+
+
    
 
 form {
@@ -52,60 +55,9 @@ form {
 }
 
 
-.center {
-    text-align: center;
-    margin-top: 15px;
-}
-
-.center2 {
-    text-align: center;
-}
-
-.submit {
-    margin-left: 10px;
-}
-
-.submit2 {
-    margin-left: 30px;
-}
-
-.field {
-    display: block;
-    margin: auto;
-    margin-top: 5px; 
-}
-
-.field2 {
-    display: inline-block;
-    margin-left: 10px; 
-}
-
-.field3 {
-    margin-left: 5px; 
-}
-
-.checks {
-    display: table;
-    margin: auto;
-    margin-top: 10px;
-}
-
-#box{
-    margin-top: 10px; 
-}
-
-#edit_div {
-    margin-top: 30px;
-}
-
-#right {
-    float: right;
-    margin-right: 50px; 
-}
-
 
 .nav_bar{
-    background: #000; /*Black*/     
+    background: #222222; /*Black*/ 
     width: 100%;
     padding: 10px 0px 10px 0px;
     margin: 0;
@@ -123,22 +75,22 @@ form {
 
 .nav_bar li {
     float: left;
-    border-right: 1px solid #ffffff; /*White*/
+    border-right: 1px #F7F7F7; /*Light Grey*/
 
 }
 
 .nav_bar li a {
-    background-color: #E0E0E0; /*Grey*/
+    background-color: #F7F7F7; /*Light Grey*/
     display: block;
-    color: black;
+    color: #222222; /*Black*/ 
     text-align: center;
     padding: 14px 20px;
     text-decoration: none;
 }
 
 .nav_bar li a:hover { 
-    background-color: antiquewhite;
-    color: #000; /*Black*/
+    color: #F7F7F7; /*Light Grey*/
+    background-color: #B31B1B; /*Cornell Red*/
 
 }
 
@@ -155,122 +107,10 @@ form {
     margin-bottom: 1%;
 }
 
-.album_bar {
-    padding: 10px;
-}
 
-
-.album_bar  ul {
-
-    list-style-type: none;
-    margin: auto;
-    padding: 0;
-    overflow: hidden;
-    display: table;
-}
-
-.album_bar li {
-    float: left;
-    border-right: 1px solid #ffffff; /*White*/
-
-}
-
-.album_bar li a {
-    background-color: #E0E0E0; /*Grey*/
+.field {
     display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-}
-
-.album_bar li a:hover { 
-    background-color: antiquewhite;
-    color: #000; /*Black*/
-
-}
-
-.album_bar li a:active { 
-    background-color: #000;
-    color: #fff; /*Black*/
-
-}
-
-#link_container  ul {
-
-    list-style-type: none;
     margin: auto;
-    padding: 0;
-    overflow: hidden;
-    display: table;
+    margin-top: 5px; 
 }
-
-#link_container li {
-    float: left;
-    border-right: 1px solid #ffffff; /*White*/
-
-}
-
-#link_container li a {
-    background-color: #E0E0E0; /*Grey*/
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-}
-
-#link_container li a:hover { 
-    background-color: antiquewhite;
-    color: #000; /*Black*/
-
-}
-
-
-
-
-.imagecontainer {
-    margin-top: 10px;
-    margin-bottom: 30px; 
-}
-
-.picture {
-    display: table;
-    margin: auto;
-    width: 80%;
-}
-
-.imagecontainer p {
-    background-color: #E7CC8F;
-    width: 80%;
-    text-align: center;
-    margin: auto;
-    padding-top: .2%;
-    padding-bottom: .2%;
-
-}
-
-#new-photos {
-    width: 200px;
-}
-
-.detail_container img{
-    width: 95%;
-    margin: auto;
-    display: block;
-    margin-bottom: 20px;
-}
-
-.info {
-    display: inline-block;
-    margin-left: 3%;
-
-}
-
-
-.error {
-    font-size: large;
-    letter-spacing: 1px;
-}
-
 

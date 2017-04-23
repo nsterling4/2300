@@ -31,25 +31,20 @@ window.onload = function date() {
     var new_p = document.createElement('p');
     var foot1p = document.createElement('p');
     var foot2p = document.createElement('p');
-    var foot3p = document.createElement('p');
     //Creates a new text element for that paragraph
     var new_text = document.createTextNode(m + " " + da + ", " + y);
     //Creates the static text element
-    var foot1 = document.createTextNode("CS2300 Final Project, ©2017");
+    var foot1 = document.createTextNode("CS2300 Project 3, ©2017");
     var foot2 = document.createTextNode("Last Updated: March 28th, 2017");
-    var foot3 = document.createTextNode("Created by SNOW Sports");
     //Isolates the footer element
     var location = document.getElementsByTagName('footer')[0];
     //Appends items to footer
     new_p.appendChild(new_text);
     foot1p.appendChild(foot1);
     foot2p.appendChild(foot2);
-    foot3p.appendChild(foot3);
     location.appendChild(foot1p);
     location.appendChild(new_p);
     location.appendChild(foot2p);
-    location.appendChild(foot3p);
-
 
                 
 }

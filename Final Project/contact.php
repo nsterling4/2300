@@ -2,24 +2,21 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>SAAC</title>
+		<title>Contact Us</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	</head>
 
-
-
 <body>
 	<?php
-		require_once 'includes/config.php';
+	require_once 'includes/config.php';
 	?>
 	<div class="contents">
-
 		<div class ="top_bar"> <!-- Contains header and Nav Bar -->
 			<div class ="banner">
 				<h1>
-					Welcome to SAAC
+					Get In Touch With Your SACC Representatives
 				</h1>
 			</div> <!--End of banner div-->
 			
@@ -29,23 +26,25 @@
     		?> 
     	</div> <!-- End of top_bar div -->
 
-
-		<div class="page_body"> <!--Info about the page-->
-
-			<h2>Student Athlete Academic Commitee</h2>
-
+		<div class="page_body"> <!--Photo Gallery-->
 			<div class="container">
 				<p id="welcome_p">This page is still in construction</p>
-		    </div>  <!-- End of search_container div -->  
+		    </div>  <!-- End of gallery_container div -->  	   
+			
+		</div> <!-- End of page_body div -->
 
-		</div> <!--End of page_body div-->
 
 		<footer>
 			<?php
-    	  		include 'includes/bottom.php';
+    	  	include 'includes/bottom.php';
     		?> 
-		</footer> <!-- end of footer div -->   
+		</footer> <!-- end of footer div -->  
 	</div> <!-- end of contents div -->
-</body>
+
+
+
+
+
+</body>	
 
 </html>

@@ -6,12 +6,10 @@ session_start();
     		<div class="nav_bar" id="main"><!--Bar to navigate around the page-->
     			<ul>
      				<li><a href="index.php">Home</a></li>
-                    <li><a href="articles.php">Articles</a></li>
-                    <li><a href="gallery.php">Gallery</a></li>
-                    <li><a href="events.php">Events</a></li>
-                    <li><a href="members.php">Members</a></li>
-                    <li><a href="about.php">About Us</a></li>
-                    <li><a href="contact.php">Contact Us</a></li>';
+     				<li><a href="gallery.php">Gallery</a></li>
+     				<li><a href="photo_add.php">Add Photo</a></li>
+     				<li><a href="album_add.php">Add Album</a></li>
+     				<li><a href="search.php">Search</a></li>';
 
 
         if (isset($_SESSION['valid_user'])) {
@@ -26,4 +24,5 @@ session_start();
     		</div> <!-- End of nav_bar div -->
     	</div>	<!--End of top_bar div-->';
 ?>
+
 

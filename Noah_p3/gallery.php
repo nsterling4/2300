@@ -16,7 +16,7 @@
 		<div class ="top_bar"> <!-- Contains header and Nav Bar -->
 			<div class ="banner">
 				<h1>
-					Check Us Out
+					Gallery
 				</h1>
 			</div> <!--End of banner div-->
 			
@@ -28,7 +28,23 @@
 
 		<div class="page_body"> <!--Photo Gallery-->
 			<div class="container">
-				<p id="welcome_p">This page is still in construction</p>
+				<?php
+				$mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME ); 
+				$result = $mysqli->query('SELECT * FROM Photos'); 
+					while ( $row = $result->fetch_assoc() ) {
+						$title = $row[ 'title' ];
+						$photoID = $row[ 'photo_id' ]; 
+						$caption = $row[ 'caption' ];
+						$path = $row[ 'photo_path' ];
+						$file_url = urlencode( $photoID );
+					echo( "	<div class='imagecontainer'>
+								<p>$title</p>
+								<a href='photo_detail.php?photo_id=$file_url'><img class='picture' src='$path' alt='$title' title='$title'></a>
+								<p>$caption</p>
+				 				</div>");
+					}
+					// All Images from Wikipedia
+				?>
 		    </div>  <!-- End of gallery_container div -->  	   
 			
 		</div> <!-- End of page_body div -->
