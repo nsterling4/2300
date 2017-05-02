@@ -34,7 +34,8 @@
 				}
 			?> 
 		    </div>  <!-- End of gallery_container div -->  	   
-			
+			<!-- 
+            -->
 		</div> <!-- End of page_body div -->
 
 

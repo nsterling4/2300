@@ -32,9 +32,9 @@
 				else {
 					echo '<p id="welcome_p">This page is still in construction. For more features please <a href="login.php">Login</a></p>';
 				}
-			?> 
+			?>  
 		    </div>  <!-- End of gallery_container div -->  	   
-			
+			<!--contact form <input type=text> -->
 		</div> <!-- End of page_body div -->
 
 
