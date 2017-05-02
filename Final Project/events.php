@@ -28,11 +28,24 @@
 			<?php
 				if (isset($_SESSION['valid_user'])) {
 					echo '<p id="welcome_p">You are currently logged in. Unfortunately this page is still in construction, please try again later.</p>';
-				}
+                    /**<button>Add an Event</button>
+                    <script>"button".onclick: open text entry form,asks for description,
+                    date, time, sport/s, photos, tags</script>
+				            **/
+                }
 				else {
 					echo '<p id="welcome_p">This page is still in construction. For more features please <a href="login.php">Login</a></p>';
 				}
 			?> 
+            <!-- 
+            new mysqli, query on events table
+            foreach event
+            <div class=event> Event Name
+            <p>event description</p>
+            <img event gallery>
+            <button> Add comment/submit photos </button> <button> Like/share etc<button> (members only)
+            <button> Edit post, remove comment etc<button> (admins only)
+            -->
 		    </div>  <!-- End of gallery_container div -->  	   
 			
 		</div> <!-- End of page_body div -->
