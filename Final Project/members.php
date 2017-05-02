@@ -28,14 +28,17 @@
     			$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 			    $member = $mysqli->query("SELECT DISTINCT memberID FROM members");
 
-			    while($name = $member->fetch_row()){
+			    while($name = $member->fetch_assoc()){
 			        //print("<div class='memberDisplay'>");
+			    	$f_name = $name['first_name'];
+            		$l_name = $name['last_name'];
+            		$sport = $name['sport'];
 			        print( 
 			            "<table> 
 			                <tr>
-			                    <td> $name[1] </td>
-			                    <td> $name[2] </td> 
-			                    <td> $name[3] </td>
+			                    <td> $f_name </td>
+			                    <td> $l_name </td> 
+			                    <td> $sport </td>
 			                </tr>
 			            </table>");
 			    }
