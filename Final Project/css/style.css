@@ -141,3 +141,20 @@ form {
     margin-top: 5px; 
 }
 
+table {
+    width: 80%;
+    border: 1px solid #333333;
+    color: white;
+    background-color: #333333;
+    font-family: 'Slabo 27px', serif;
+    margin-left: 100px;
+}
+
+td {
+    width: 100px;
+    border-style: solid;
+    border: 2px;
+    border: 1px solid white;
+    height: 50px;
+    padding-left: 15px;
+}
