@@ -28,6 +28,10 @@
 			<?php
 				if (isset($_SESSION['valid_user'])) {
 					echo '<p id="welcome_p">You are currently logged in. Unfortunately this page is still in construction, please try again later.</p>';
+                  /**<button>Add an Article</button>
+                    <script>"button".onclick: open text entry form,asks for article,
+                    gives timestamp, photos, tags</script>
+				            **/
 				}
 				else {
 					echo '<p id="welcome_p">This page is still in construction. For more features please <a href="login.php">Login</a></p>';
