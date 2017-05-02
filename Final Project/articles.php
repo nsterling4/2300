@@ -9,9 +9,6 @@
 	</head>
 
 <body>
-	<?php
-	require_once 'includes/config.php';
-	?>
 	<div class="contents">
 		<div class ="top_bar"> <!-- Contains header and Nav Bar -->
 			<div class ="banner">
@@ -28,7 +25,14 @@
 
 		<div class="page_body"> <!--Photo Gallery-->
 			<div class="container">
-				<p id="welcome_p">This page is still in construction</p>
+			<?php
+				if (isset($_SESSION['valid_user'])) {
+					echo '<p id="welcome_p">You are currently logged in. Unfortunately this page is still in construction, please try again later.</p>';
+				}
+				else {
+					echo '<p id="welcome_p">This page is still in construction. For more features please <a href="login.php">Login</a></p>';
+				}
+			?> 
 		    </div>  <!-- End of gallery_container div -->  	   
 			
 		</div> <!-- End of page_body div -->

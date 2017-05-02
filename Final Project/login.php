@@ -38,7 +38,6 @@
 
 
 			<?php
-				require_once 'includes/config.php';
 
 				$mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME );
 
@@ -52,52 +51,54 @@
 
 					//Create new user 	
 
-					// $hashed_password=password_hash( $post_password, PASSWORD_DEFAULT);	
+					$hashed_password=password_hash( $post_password, PASSWORD_DEFAULT);	
 
-					// $sql ="INSERT INTO Users(username, hash_password) VALUES ('$post_username','$hashed_password')";
-					// if ($mysqli->query($sql)) {
-	     				//echo "New record created successfully";
-					// } else {
-	     				//echo "Error:". $mysqli->error;
-					// }
+					// INSERT INTO `Users`(`username`, `hash_password`) VALUES ([value-1],[value-2])
 
-					// }
-
-					//username: project_3
-					//password: wordpass
-
-					$sql = "SELECT * FROM Users WHERE username = '$post_username'";
-
-					$result = $mysqli->query($sql);
-				
-					//Uncomment the next line for debugging
-					//echo "<pre>" . print_r( $mysqli, true) . "</p>";
-
-					//Make sure there is exactly one user with this username
-					if ( $result && $result->num_rows == 1) {
-						
-						$row = $result->fetch_assoc();
-						//Debugging
-						//echo "<pre>" . print_r( $row, true) . "</p>";
-						
-						$db_hash_password = $row['hash_password'];
-						
-						if( password_verify( $post_password, $db_hash_password ) ) {
-							$db_username = $row['username'];
-							$_SESSION['valid_user'] = $db_username;
-							echo "<META HTTP-EQUIV=Refresh CONTENT='login.php'>";
-						}
-					} 
-					
-					$mysqli->close();
-					
-					if ( isset($_SESSION['valid_user'] ) ) {
-						print("<p>You have successfully logged into this site<p>");
+					$sql ="INSERT INTO Users(username, hash_password) VALUES ('$post_username','$hashed_password')";
+					if ($mysqli->query($sql)) {
+	     				echo "New record created successfully";
 					} else {
-						echo '<p>You did not login successfully.</p>';
+	     				echo "Error:". $mysqli->error;
 					}
+
+					}
+
+				// 	//username: project_3
+				// 	//password: wordpass
+
+				// 	$sql = "SELECT * FROM Users WHERE username = '$post_username'";
+
+				// 	$result = $mysqli->query($sql);
 				
-				} //end if isset username and password
+				// 	//Uncomment the next line for debugging
+				// 	//echo "<pre>" . print_r( $mysqli, true) . "</p>";
+
+				// 	//Make sure there is exactly one user with this username
+				// 	if ( $result && $result->num_rows == 1) {
+						
+				// 		$row = $result->fetch_assoc();
+				// 		//Debugging
+				// 		//echo "<pre>" . print_r( $row, true) . "</p>";
+						
+				// 		$db_hash_password = $row['hash_password'];
+						
+				// 		if( password_verify( $post_password, $db_hash_password ) ) {
+				// 			$db_username = $row['username'];
+				// 			$_SESSION['valid_user'] = $db_username;
+				// 			echo "<META HTTP-EQUIV=Refresh CONTENT='login.php'>";
+				// 		}
+				// 	} 
+					
+				// 	$mysqli->close();
+					
+				// 	if ( isset($_SESSION['valid_user'] ) ) {
+				// 		print("<p>You have successfully logged into this site<p>");
+				// 	} else {
+				// 		echo '<p>You did not login successfully.</p>';
+				// 	}
+				
+				// } //end if isset username and password
 
 
 

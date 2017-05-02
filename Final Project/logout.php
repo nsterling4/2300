@@ -9,9 +9,6 @@
 	</head>
 
 <body>
-	<?php
-	require_once 'includes/config.php';
-	?>
 	<div class="contents">
 		<div class ="top_bar"> <!-- Contains header and Nav Bar -->
 			<div class ="banner">

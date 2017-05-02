@@ -70,12 +70,14 @@ form {
     margin: auto;
     padding: 0;
     overflow: hidden;
-    display: table;
+    display: inline-block;
+    border-radius: 15px;
 }
 
 .nav_bar li {
     float: left;
     border-right: 1px #F7F7F7; /*Light Grey*/
+
 
 }
 
@@ -91,9 +93,23 @@ form {
 .nav_bar li a:hover { 
     color: #F7F7F7; /*Light Grey*/
     background-color: #B31B1B; /*Cornell Red*/
-
 }
 
+#main {
+    margin-left: 300px;
+}
+
+#log {
+    float: right;
+    margin-right: 10px;
+    border-radius: 30px;
+}
+
+#log li a {
+    padding: 14px 14px;
+}
+
+    
 
 #welcome_p {
     text-align: center;
