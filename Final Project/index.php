@@ -15,9 +15,12 @@
 
 		<div class ="top_bar"> <!-- Contains header and Nav Bar -->
 			<div class ="banner">
-				<h1>
-					Welcome to SAAC
+
+				<h1> 
+					Welcome to SAAC 	
+<!-- 					<img class="logo" src="images/cornell_white.jpeg" alt="Cornell Logo" title="Cornell University">  -->		         
 				</h1>
+
 			</div> <!--End of banner div-->
 			
 
