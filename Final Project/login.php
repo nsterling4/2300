@@ -38,104 +38,67 @@
 
 
 			<?php
+
 				$mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME );
-				if($mysqli->connect_errno){
-					//uncomment the next line for debugging
-					//echo "<p>$mysqli->connect_error<p>";
-					die( "Couldn't connect to database");
-				}
 
 				$post_username = filter_input( INPUT_POST, 'user', FILTER_SANITIZE_STRING );
 				$post_password = filter_input( INPUT_POST, 'pass', FILTER_SANITIZE_STRING ); 
-				if(isset($_POST["login"])){
-					if (empty($post_username)||empty($post_password)){
 
-					}else{
-						//hash the entered password for comparison with the db hashed password
-						//$hashed_password = password_hash($post_password, PASSWORD_DEFAULT).'<br>';
-
-						//This value is what you need to enter into the hashpassword field in the database
-						//echo "<p>Hashed password: $hashed_password</p>";
-						
-						//Check for a record that matches the POSTed username
-						$result = $mysqli->query("SELECT * FROM Users WHERE	username = '$post_username'");
-
-						//Make sure there is exactly one user with this username
-						if($result && $result->num_rows === 1) {
-							$row = $result->fetch_assoc();
-							$db_hash_password = $row['hashpassword'];
-
-							//verify password
-							if(password_verify($post_password, $db_hash_password)){
-								$db_username = $row['username'];
-								$_SESSION['logged_user_by_sql'] = $db_username;
-							}
-						}
-						
-						if(isset($_SESSION['logged_user_by_sql'])){
-							print("<p>Welcome, $db_username. 
-								You have administrative access to 
-								the SAAC Website</p>");
-						}else{
-							print("<p>You did not login successfully.</p>");
-							print("<p><a href='join.php'>Please try again</a></p>");
-						}
-						
-					} //end if isset username and password
-				}
-				// if (isset($_POST["login"])) {
-				// 	//Get the post data and clean it up so it is safe
-
-				// 	//Create new user 	
-
-				// 	$hashed_password=password_hash( $post_password, PASSWORD_DEFAULT);	
-
-				// 	// INSERT INTO `Users`(`username`, `hash_password`) VALUES ([value-1],[value-2])
-
-				// 	$sql ="INSERT INTO Users(username, hash_password) VALUES ('$post_username','$hashed_password')";
-				// 	if ($mysqli->query($sql)) {
-	   //   				echo "New record created successfully";
-				// 	} else {
-	   //   				echo "Error:". $mysqli->error;
-				// 	}
-
-				// 	}
-
-				// 	//username: project_3
-				// 	//password: wordpass
-
-				// 	$sql = "SELECT * FROM Users WHERE username = '$post_username'";
-
-				// 	$result = $mysqli->query($sql);
 				
-				// 	//Uncomment the next line for debugging
-				// 	//echo "<pre>" . print_r( $mysqli, true) . "</p>";
 
-				// 	//Make sure there is exactly one user with this username
-				// 	if ( $result && $result->num_rows == 1) {
-						
-				// 		$row = $result->fetch_assoc();
-				// 		//Debugging
-				// 		//echo "<pre>" . print_r( $row, true) . "</p>";
-						
-				// 		$db_hash_password = $row['hash_password'];
-						
-				// 		if( password_verify( $post_password, $db_hash_password ) ) {
-				// 			$db_username = $row['username'];
-				// 			$_SESSION['valid_user'] = $db_username;
-				// 			echo "<META HTTP-EQUIV=Refresh CONTENT='login.php'>";
-				// 		}
-				// 	} 
-					
-				// 	$mysqli->close();
-					
-				// 	if ( isset($_SESSION['valid_user'] ) ) {
-				// 		print("<p>You have successfully logged into this site<p>");
-				// 	} else {
-				// 		echo '<p>You did not login successfully.</p>';
-				// 	}
+				if (isset($_POST["login"])) {
+					//Get the post data and clean it up so it is safe
+
+					//Create new user 	
+
+					// $hashed_password=password_hash( $post_password, PASSWORD_DEFAULT);	
+
+					// // INSERT INTO `Users`(`username`, `hash_password`) VALUES ([value-1],[value-2])
+
+					// $sql ="INSERT INTO Users(username, hash_password) VALUES ('$post_username','$hashed_password')";
+					// if ($mysqli->query($sql)) {
+	    //  				echo "New record created successfully";
+					// } else {
+	    //  				echo "Error:". $mysqli->error;
+					// }
+
+					// }
+
+				 	//username: SAAC_Admin
+				 	//password: BigRed
+
+					$sql = "SELECT * FROM Users WHERE username = '$post_username'";
+
+					$result = $mysqli->query($sql);
 				
-				// } //end if isset username and password
+					//Uncomment the next line for debugging
+					//echo "<pre>" . print_r( $mysqli, true) . "</p>";
+
+					//Make sure there is exactly one user with this username
+					if ( $result && $result->num_rows == 1) {
+						
+						$row = $result->fetch_assoc();
+						//Debugging
+						//echo "<pre>" . print_r( $row, true) . "</p>";
+						
+						$db_hash_password = $row['hash_password'];
+						
+						if( password_verify( $post_password, $db_hash_password ) ) {
+							$db_username = $row['username'];
+							$_SESSION['valid_user'] = $db_username;
+							echo "<META HTTP-EQUIV=Refresh CONTENT='login.php'>";
+						}
+					} 
+					
+					$mysqli->close();
+					
+					if ( isset($_SESSION['valid_user'] ) ) {
+						print("<p>You have successfully logged into this site<p>");
+					} else {
+						echo '<p>You did not login successfully.</p>';
+					}
+				
+				} //end if isset username and password
 
 
 

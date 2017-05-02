@@ -2,8 +2,9 @@
 session_start();
 require_once 'includes/config.php';
     echo 
-    '<div class="top_bar"> <!-- Contains header and Nav Bar -->     
+    '<div class="top_bar"> <!-- Contains header and Nav Bar -->
         <div class="nav_bar"><!--Bar to navigate around the page-->
+         <img class="bear_logo" src="images/CornellBigRed.png" alt="Cornell Logo" title="Cornell University"> 
             <ul id="main">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="articles.php">Articles</a></li>
