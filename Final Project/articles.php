@@ -30,7 +30,7 @@
 					echo '<p id="welcome_p">You are currently logged in. Unfortunately this page is still in construction, please try again later.</p>';
                   /**<button>Add an Article</button>
                     <script>"button".onclick: open text entry form,asks for article,
-                    gives timestamp, photos, tags</script>
+                    gives timestamp, photos, tags</script> (members and admin only)
 				            **/
 				}
 				else {
