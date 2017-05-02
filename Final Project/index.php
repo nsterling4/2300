@@ -36,7 +36,7 @@
 
 			<div class="container">
 			<?php
-				echo '<p id="intro">Welcome to the Student Athlete Advisory Committee (SAAC) website. We are composed of representatives from all varsity sports, working with the athletic administration to enhance the Student Athlete experience</p>';
+				echo '<p id="intro">Welcome to the Student Athlete Advisory Committee (SAAC) website. The Student-Athlete Advisory Committee serves as the communication line between student-athletes and the athlete administration. Its goal is to enhance the student-athlete experience. We are composed of representatives from all varsity sports, working with the athletic administration to enhance the Student Athlete experience. By NCAA rule, it is required that a SAAC is present on each Division I campus. </p>';
 				if (isset($_SESSION['valid_user'])) {
 					echo '<p id="welcome_p">You are currently logged in. Unfortunately this page is still in construction, please try again later.</p>';
 				}
