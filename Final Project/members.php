@@ -22,6 +22,25 @@
     	  		include 'includes/navbar.php';
     		?> 
     	</div> <!-- End of top_bar div -->
+    	<!-- Membership info displayed in a table -->
+    	<div>
+    		<?php
+    			$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+			    $member = $mysqli->query("SELECT DISTINCT memberID FROM members");
+
+			    while($name = $member->fetch_row()){
+			        //print("<div class='memberDisplay'>");
+			        print( 
+			            "<table> 
+			                <tr>
+			                    <td> $name[1] </td>
+			                    <td> $name[2] </td> 
+			                    <td> $name[3] </td>
+			                </tr>
+			            </table>");
+			    }
+    		?>
+    	</div>
 
 		<div class="page_body"> <!--Photo Gallery-->
 			<div class="container">
