@@ -36,6 +36,7 @@
 
 			<div class="container">
 			<?php
+				echo '<p id="welcome_p">Welcome to the Student Athlete Advisory Committee (SAAC) website. We are composed of representatives from all varsity sports, working with the athletic administration to enhance the Student Athlete experience</p>';
 				if (isset($_SESSION['valid_user'])) {
 					echo '<p id="welcome_p">You are currently logged in. Unfortunately this page is still in construction, please try again later.</p>';
 				}
