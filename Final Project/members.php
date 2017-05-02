@@ -25,9 +25,8 @@
     	<!-- Membership info displayed in a table -->
     	<div>
     		<?php
-    			include 'includes/config.php';
     			$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-			    $member = $mysqli->query("SELECT DISTINCT memberID FROM members");
+			    $member = $mysqli->query("SELECT DISTINCT memberID, first_name, last_name, sport FROM members");
 
 			    while($name = $member->fetch_assoc()){
 			        //print("<div class='memberDisplay'>");

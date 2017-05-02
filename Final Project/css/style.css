@@ -134,6 +134,17 @@ form {
     margin-bottom: 1%;
 }
 
+#intro{
+    text-align: left;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    width: 40%;
+    background: #E0E0E0;
+    border-radius: 50px;
+    margin: auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
 
 .field {
     display: block;
@@ -141,3 +152,20 @@ form {
     margin-top: 5px; 
 }
 
+table {
+    width: 80%;
+    border: 1px solid #333333;
+    color: white;
+    background-color: #333333;
+    font-family: 'Slabo 27px', serif;
+    margin-left: 100px;
+}
+
+td {
+    width: 100px;
+    border-style: solid;
+    border: 2px;
+    border: 1px solid white;
+    height: 50px;
+    padding-left: 15px;
+}
