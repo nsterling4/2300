@@ -32,7 +32,7 @@
 
 		<div class="page_body"> <!--Info about the page-->
 
-			<h2>Student Athlete Advisory Commitee</h2>
+			<h2>Student Athlete Advisory Committee</h2>
 
 			<div class="container">
 

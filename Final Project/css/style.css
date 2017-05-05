@@ -168,3 +168,57 @@ td {
     height: 50px;
     padding-left: 15px;
 }
+
+/*all .gallery stuff pertains to album thumbnails*/
+#gallery_thumbnails{
+    display: block;
+    margin: auto;
+    text-align: center;
+    padding-top: 350px;
+}
+.gallery {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    margin: 5px;
+    float: left;
+    width: 180px;
+}
+
+.gallery:hover {
+    display: block;
+    margin: auto;
+    opacity: 1;
+    text-align: center;
+    border: 3px solid #777;
+}
+
+.gallery img {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 50%;
+    opacity: .5.;
+    width: 100%;
+    height: auto;
+}
+
+/*the follow is for display a selected picture*/
+.displayingImages{
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    border: 2px solid #87CEFA;
+    border-radius: 4px;
+    width: 50%;
+    background-color: white;
+}
+
+
+.albumDisplays{
+    display: inline-block;
+    margin: auto;
+    text-align: center;
+}

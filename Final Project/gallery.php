@@ -24,6 +24,18 @@
     	</div> <!-- End of top_bar div -->
 
 		<div class="page_body"> <!--Photo Gallery-->
+			<div id="gallery_thumbnails">
+			<!-- display a thumbnail for each album -->
+				<?php
+					include 'includes/albumDisplayThumbnails.php';
+				?>
+			</div>
+			<div id="imageDisplay">
+			<!-- if a photo was selected -->
+				<?php
+					include 'includes/photoSelect.php';
+				?>
+			</div>
 			<div class="container">
 			<?php
 				if (isset($_SESSION['valid_user'])) {
