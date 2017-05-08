@@ -1,0 +1,224 @@
+html, body {
+
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #F7F7F7; /*Light Grey*/
+    vertical-align: baseline;
+}
+
+
+
+ h1 {
+
+    background: #B31B1B; /*Cornell Red*/
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0;
+    width: 100%;
+    color: #F7F7F7; /*Light Grey*/
+}
+
+ h2 {
+
+    color: #B31B1B; /*Cornell Red*/
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0;
+    width: 100%;
+}
+
+footer {
+    color: #F7F7F7; /*Light Grey*/
+    background: #B31B1B; /*Cornell Red*/
+    margin-bottom: 0;
+    width: 100%;
+    padding: 3px;
+}
+
+footer p {
+    text-align: center;
+    margin: 10px;
+}
+
+
+   
+
+form {
+    margin: auto;
+    display: table;
+    padding: 20px;
+}
+
+
+
+.nav_bar{
+    background: #222222; /*Black*/ 
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+    margin: 0;
+}
+
+
+.nav_bar  ul {
+
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+    overflow: hidden;
+    display: inline-block;
+    border-radius: 15px;
+}
+
+.nav_bar li {
+    float: left;
+    border-right: 1px #F7F7F7; /*Light Grey*/
+
+
+}
+
+.nav_bar li a {
+    background-color: #F7F7F7; /*Light Grey*/
+    display: block;
+    color: #222222; /*Black*/ 
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.nav_bar li a:hover { 
+    color: #F7F7F7; /*Light Grey*/
+    background-color: #B31B1B; /*Cornell Red*/
+}
+
+#main {
+    margin-left: 247px;
+}
+
+#log {
+    float: right;
+    margin-right: 10px;
+    border-radius: 30px;
+}
+
+#log li a {
+    padding: 14px 14px;
+}
+
+    
+.logo {
+    float: right;
+    /*height: 70px;*/
+    margin-right: 10px;
+}
+
+.bear_logo {
+    float: left;
+    height: 50px;
+    margin-left: 10px;
+}
+
+#welcome_p {
+    text-align: center;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    width: 40%;
+    background: #E0E0E0;
+    border-radius: 50px;
+    margin: auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#intro{
+    text-align: left;
+    padding: 5%;
+    width: 80%;
+    background: #E0E0E0;
+    border-radius: 50px;
+    margin: auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.field {
+    display: block;
+    margin: auto;
+    margin-top: 5px; 
+}
+
+table {
+    width: 80%;
+    border: 1px solid #333333;
+    color: white;
+    background-color: #333333;
+    font-family: 'Slabo 27px', serif;
+    margin-left: 100px;
+}
+
+td {
+    width: 100px;
+    border-style: solid;
+    border: 2px;
+    border: 1px solid white;
+    height: 50px;
+    padding-left: 15px;
+}
+
+/*all .gallery stuff pertains to album thumbnails*/
+#gallery_thumbnails{
+    display: block;
+    margin: auto;
+    text-align: center;
+    padding-top: 350px;
+}
+.gallery {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    margin: 5px;
+    float: left;
+    width: 180px;
+}
+
+.gallery:hover {
+    display: block;
+    margin: auto;
+    opacity: 1;
+    text-align: center;
+    border: 3px solid #777;
+}
+
+.gallery img {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 50%;
+    opacity: .5.;
+    width: 100%;
+    height: auto;
+}
+
+/*the follow is for display a selected picture*/
+.displayingImages{
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    border: 2px solid #87CEFA;
+    border-radius: 4px;
+    width: 50%;
+    background-color: white;
+}
+
+
+.albumDisplays{
+    display: inline-block;
+    margin: auto;
+    text-align: center;
+}
