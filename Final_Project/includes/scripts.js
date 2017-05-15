@@ -11,8 +11,13 @@
     	if (response.status === 'connected') {
    			// Logged into your app and Facebook.
    			console.log('you been connected')
-        console.log(response.authResponse.accessToken);
+        var token = response.authResponse.accessToken;
+        console.log(token);
         console.log (response.authResponse.userID);
+        FB.api('/me','GET', {"fields":"name"},function(response) {
+        console.log(response.name);
+        }
+        );
 	    } else {
 	    	console.log('fam u aint connected')
 	    // The person is not logged into this app or we are unable to tell. 
