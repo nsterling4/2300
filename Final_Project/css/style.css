@@ -134,6 +134,20 @@ form {
     margin-bottom: 1%;
 }
 
+.forms {
+    text-align: center;
+    width: 40%;
+    background: #E0E0E0;
+    border-radius: 50px;
+    margin: auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.g-recaptcha {
+    display: inline-block;
+}
+
 #intro{
     text-align: left;
     padding: 5%;
