@@ -15,14 +15,9 @@ require_once 'includes/config.php';
                 <li><a href="contact.php">Contact Us</a></li>
             </ul>
 
-            <ul id="log">';
-                if (isset($_SESSION['valid_user'])) {
-                    echo '<li><a href="logout.php">Logout</a></li>';
-                } else {
-                    echo '<li><a href="login.php">Login</a></li>';
-                }      
-            echo 
-            '</ul>
+            <ul id="log">
+               <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false" onlogin="fbcheck()"></div>
+            </ul>
         </div> <!-- End of nav_bar div -->
     </div>  <!--End of top_bar div-->';
 ?>
