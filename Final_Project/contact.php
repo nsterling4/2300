@@ -29,7 +29,7 @@
 		<div class="page_body"> <!--Photo Gallery-->
 			<div class="container">
 				<?php
-    	  			include 'includes/mail.php';
+    	  			include 'includes/mail.php';	
     			?> 
 				
 				<form method="post" class="forms">
