@@ -28,7 +28,7 @@
 		<div class="page_body"> <!--Photo Gallery-->
 			<div class="container">
 			<iframe class= forms src="https://calendar.google.com/calendar/embed?src=saaccornell%40gmail.com&ctz=America/New_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-            -->
+
 		    </div>  <!-- End of gallery_container div -->  	   
 			
 		</div> <!-- End of page_body div -->
