@@ -3,12 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<title>SAAC</title>
-<<<<<<< HEAD
 		<link rel="stylesheet" type="text/css" href="css/style.css?v=221">
-=======
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link href="https://fonts.googleapis.com/css?family=Cormorant+SC|Linden+Hill|PT+Serif:700i" rel="stylesheet">
->>>>>>> origin/master
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="includes/scripts.js"></script>
@@ -63,25 +60,18 @@
                 w3.slideshow(".nature");
                 </script>
             -->
+            <h2>Meeting Agendas</h2>
+            <div>
+            <?php
+              $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+              $pdfs = $mysqli->query("SELECT * FROM meetings");
+              while($display = $pdfs->fetch_assoc()){
+                //print ("<a href='$display['agendaPath'].pdf' target='_blank'> $display['date'] Meeting Agenda </a>");
+              }
+            ?>
+            </div>
 		</div> <!--End of page_body div-->
-        <!-- twitter api to link timeline on side of homepage
-    <script>window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
-
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
-
-  return t;
-}(document, "script", "twitter-wjs"));</script> -->
-        
+             
          <script>
              //Array of images which you want to show: Use path you want.
             var images=new Array('images/2017Reps.jpg','images/2016Reps.jpg','images/2015Reps.jpg', 'images/2014Reps.jpg');
@@ -99,13 +89,7 @@
         </script>
 
         <!-- display the links for the  -->
-        <h2>Meeting Agendas</h2>
-        <?php
-          $pdfs = $mysqli->query("SELECT * FROM meetings");
-          while($display = $pdfs->fetch_assoc()){
-            echo ("<a href='$display['agendaPath'].pdf' target='_blank'>$display['date'] Meeting Agenda</a>");
-          }
-        ?>
+        
 
 		<footer>
 			<?php
