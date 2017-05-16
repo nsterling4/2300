@@ -43,7 +43,7 @@
             		$memberID = $name["memberID"];
             		if(!empty($photoID)){
             			$file_path = $mysqli->query("SELECT picPath FROM photos WHERE photoID = $photoID");
-            			$photo = <img src='$file_path'alt='$f_name'>;
+            			$photo = "<img src='$file_path'alt='$f_name'>";
             		}
 
 			        print( 
