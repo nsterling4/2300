@@ -15,8 +15,8 @@
         console.log(token);
         console.log (response.authResponse.userID);
         FB.api('/me','GET', {"fields":"name"},function(response) {
-          name = {'name':response.name};
-          console.log(response.name);
+          var name = {'name':response.name};
+          console.log(name);
            $.ajax({
               url: 'includes/dummy.php',
               type: 'post',
@@ -29,15 +29,21 @@
         );
       } else {
         console.log('fam u aint connected')
+        var blank = {'blank':'nope'};
+        $.ajax({
+              url: 'includes/dummy.php',
+              type: 'post',
+              data: blank
+          })
+          .done(function(response){
+            console.log('executed')
+          })
+          .fail(function(response){
+            console.log('fail')
+          })
       // The person is not logged into this app or we are unable to tell. 
       }
   }); 
-
-  function fbLogout() {
-        FB.logout(function (response) {
-            window.location.reload();
-        });
-    }
 
   };
 
