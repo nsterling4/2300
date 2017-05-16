@@ -97,6 +97,16 @@
                  });
              }
         </script>
+
+        <!-- display the links for the  -->
+        <h2>Meeting Agendas</h2>
+        <?php
+          $pdfs = $mysqli->query("SELECT * FROM meetings");
+          while($display = $pdfs->fetch_assoc()){
+            echo ("<a href='$display['agendaPath'].pdf' target='_blank'>$display['date'] Meeting Agenda</a>");
+          }
+        ?>
+
 		<footer>
 			<?php
     	  		include 'includes/bottom.php';
