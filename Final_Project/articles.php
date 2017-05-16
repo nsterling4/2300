@@ -30,7 +30,7 @@
 		<div class="page_body"> <!--Photo Gallery-->
 			<div class="container">
 				<?php
-					if (isset($_SESSION['valid_user'])) {
+					if (isset($_SESSION['admin_user'])) {
 						//display rich text form
 						echo '
 							<div class="forms">
