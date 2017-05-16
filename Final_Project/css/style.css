@@ -140,6 +140,35 @@ form {
     background-color: #B31B1B; /*Cornell Red*/
 }
 
+
+
+.admin_login  ul {
+
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+    overflow: hidden;
+    display: inline-block;
+    border-radius: 15px;
+}
+
+.admin_login li {
+    float: left;
+    border-right: 1px #F7F7F7; /*Light Grey*/
+
+
+}
+
+.admin_login li a {
+    background-color: #F7F7F7; /*Light Grey*/
+    display: block;
+    color: #222222; /*Black*/ 
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
 #main {
     margin-left: 5px;
 }

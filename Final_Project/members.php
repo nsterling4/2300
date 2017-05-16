@@ -28,6 +28,7 @@
 		<div class="page_body"> <!--Photo Gallery-->
 			<div class="container">
 			<h3>Our Active Members</h3>
+				<div class="admin_login">
 				<ul>
 				<?php
 					echo "Admin Login";
@@ -39,6 +40,7 @@
 			        }
 				?>
 				</ul>
+				</div>
 
 
 			<?php
