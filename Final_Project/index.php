@@ -14,7 +14,7 @@
 
 		<div class ="top_bar"> <!-- Contains header and Nav Bar -->
 			<div class ="banner">
-                <span><button id="quicksearch">Search Site</button>
+                <span id="button"><button id="quicksearch">Search Site</button>
                 </span>
 				<h1> 
 					Welcome to SAAC 	
