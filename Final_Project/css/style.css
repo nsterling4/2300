@@ -362,6 +362,7 @@ td {
 
     h2 {
         padding-top: 2%;
+        width: 70%; 
     }
 
    
@@ -404,13 +405,14 @@ td {
         margin-left: 15%; 
     } 
 
-    .page_body {
-        margin-top: 190px;
-    }
 
 
     h1 {
         font-size: 24px;
+    }
+
+    h2 {
+        width: 70%;
     }
 
     #desk {
