@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title>ADMINS ONLY</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link href="https://fonts.googleapis.com/css?family=Cormorant+SC|Linden+Hill|PT+Serif:700i" rel="stylesheet">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	</head>
@@ -28,7 +29,7 @@
 
 		<div class="page_body"> <!--Photo Gallery-->
 			<div class="container">
-				<form method="post" action='login.php'>
+				<form method="post" class='forms' action='login.php'>
 					Enter Username:<input type="text" class="field" name="user" placeholder="Username"><br>
 					Enter Password:<input type="password" class="field" name="pass" placeholder="Password"><br>
 					<input type="submit" class="field" name="login" value="Login">

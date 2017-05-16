@@ -32,7 +32,6 @@
 				<ul>
 				<?php
 					echo "Admin Login";
-					session_start();
 			        if (isset($_SESSION['valid_user'])) {
 			            echo '<li><a href="logout.php">Logout</a></li>';
 			        } else {

@@ -140,7 +140,13 @@ form {
     background-color: #B31B1B; /*Cornell Red*/
 }
 
-
+.admin_login{
+    background: #222222; /*Black*/ 
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+    margin: 0;
+    font-family: 'Cormorant SC', serif;
+}
 
 .admin_login  ul {
 
@@ -167,6 +173,11 @@ form {
     padding: 14px 20px;
     text-decoration: none;
     font-size: 20px;
+}
+
+.admin_login li a:hover { 
+    color: #F7F7F7; /*Light Grey*/
+    background-color: #B31B1B; /*Cornell Red*/
 }
 
 #main {
