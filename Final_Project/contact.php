@@ -78,7 +78,9 @@
     		$email_subject = "CONTACT US";
 
 
-    		$email_message="Name: $name \n Email: $email \n Affiliation: $affiliation \n $Involved: $involved \n Comment: $info";
+    		$email_message="Name: $name \n Email: $email \n Affiliation: $affiliation \n Involved: $involved \n Comment: $info";
+
+    		echo "Message: $email_message";
   
  
     // $email_message .= "Name: ".clean_string($name)."\n";
