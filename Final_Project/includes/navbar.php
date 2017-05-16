@@ -16,15 +16,15 @@ require_once 'includes/config.php';
             </ul>
 
             <ul class="log" id="desk">
-               <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+               <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false" onlogin="window.location.reload()";></div>
             </ul>
 
             <ul class="log" id="tab">
-               <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+               <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false" onlogin="window.location.reload()"></div>
             </ul>
 
             <ul class="log" id="mob">
-               <div class="fb-login-button" data-max-rows="1" data-size="small" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+               <div class="fb-login-button" data-max-rows="1" data-size="small" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false" onlogin="window.location.reload()"></div>
             </ul>
         </div> <!-- End of nav_bar div -->
     </div>  <!--End of top_bar div-->';

@@ -40,14 +40,17 @@ button {
     
 }
 
+
  h2 {
 
     color: #B31B1B; /*Cornell Red*/
     text-align: center;
     padding-bottom: 10px;
-    margin: 0;
-    width: 100%;
-    display: inline-block;
+    padding-top: 10px;
+    margin: auto;
+    width: 30%;
+    background-color: #F7F7F7;
+    border-radius: 50px;
 }
 
 #dropdownsearch {
@@ -91,7 +94,7 @@ form {
 
 .page_body {
     padding-bottom:134px; /* Height of the footer element */
-    background-size: cover;
+    /*background-size: cover;*/
 }
 
 
@@ -133,6 +136,50 @@ form {
 }
 
 .nav_bar li a:hover { 
+    color: #F7F7F7; /*Light Grey*/
+    background-color: #B31B1B; /*Cornell Red*/
+}
+
+.admin_login{
+    background: #222222; 
+    width: 13%;
+    padding: 10px 5px 10px 10px;
+    margin: 0;
+    font-family: 'Cormorant SC', serif;
+    float: right;
+    border-radius: 20px;
+    display: inline-flex;
+    margin-right: 5px;
+}
+
+.admin_login  ul {
+
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+    overflow: hidden;
+    display: inline-block;
+    border-radius: 15px;
+}
+
+.admin_login li {
+    float: left;
+    border-right: 1px #F7F7F7; /*Light Grey*/
+
+
+}
+
+.admin_login li a {
+    background-color: #F7F7F7; /*Light Grey*/
+    display: block;
+    color: #222222; /*Black*/ 
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.admin_login li a:hover { 
     color: #F7F7F7; /*Light Grey*/
     background-color: #B31B1B; /*Cornell Red*/
 }
@@ -196,6 +243,17 @@ form {
     display: block;
 }
 
+
+.cal {
+    text-align: center;
+    width: 60%;
+    background: #E0E0E0;
+    margin: auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    display: block;
+}
+
 .g-recaptcha {
     display: inline-block;
 }
@@ -207,8 +265,9 @@ form {
     background: #E0E0E0;
     border-radius: 50px;
     margin: auto;
-    margin-top: 1%;
-    margin-bottom: 1%;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    opacity: .8;
 }
 
 .field {
@@ -358,6 +417,7 @@ td {
 
     h2 {
         padding-top: 2%;
+        width: 70%; 
     }
 
    
@@ -400,13 +460,14 @@ td {
         margin-left: 15%; 
     } 
 
-    .page_body {
-        margin-top: 190px;
-    }
 
 
     h1 {
         font-size: 24px;
+    }
+
+    h2 {
+        width: 70%;
     }
 
     #desk {

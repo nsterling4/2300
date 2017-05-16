@@ -30,10 +30,15 @@
 		<div class="page_body"> <!--Photo Gallery-->
 			<div class="container">
 				<?php
-    	  			include 'includes/mail.php';
+    	  			include 'includes/mail.php';	
     			?> 
-				
-				<form method="post" class="forms">
+
+
+    			<?php
+					if (isset($_SESSION['valid_user'])) {
+						//display rich text form
+						echo '
+<form method="post" class="forms">
 						<p><span class="error">* required field.</span></p>
 
 						Name: <input type="text" name="name">
@@ -69,7 +74,14 @@
 
 	  					<input type="submit" name="submit" value="Submit"/> 
 
-				</form> 
+				</form> ';
+					}
+					else {
+						echo '<p id="welcome_p">Log In to submit feedback </p>';
+					}
+				?> 
+				
+				
 
 
 

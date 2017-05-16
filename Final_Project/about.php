@@ -28,14 +28,35 @@
 
 		<div class="page_body"> <!--Photo Gallery-->
 			<div class="container">
+
+			<h2> Our Web Administrators and Executive Board</h2>
 			<?php
-				if (isset($_SESSION['valid_user'])) {
-					echo '<p id="welcome_p">You are currently logged in. Unfortunately this page is still in construction, please try again later.</p>';
-				}
-				else {
-					echo '<p id="welcome_p">This page is still in construction. For more features please <a href="login.php">Login</a></p>';
-				}
-			?> 
+			 $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+			 $member = $mysqli->query("SELECT DISTINCT memberID, first_name, last_name, sport, class, photoID FROM members WHERE admin = 1");
+			   while($name = $member->fetch_assoc()){
+				        //print("<div class='memberDisplay'>");
+				    	$f_name = $name['first_name'];
+	            		$l_name = $name['last_name'];
+	            		if(!empty($name['sport'])){
+	            			$sport = $name['sport'];
+	            		}if(empty($name['sport'])){
+	            			$sport = "-------";
+	            		}
+	            		$year = $name['class'];
+	            		$memberID = $name["memberID"];
+
+	            		// Membership info displayed in a table
+				        print( 
+				            "<table> 
+				                <tr>
+				                    <td> $f_name </td>
+				                    <td> $l_name </td> 
+				                    <td> $sport </td>
+				                    <td> $year </td>
+				                </tr>
+				            </table>");
+				    }
+				            ?>
 		    </div>  <!-- End of gallery_container div -->  	   
 			
 		</div> <!-- End of page_body div -->

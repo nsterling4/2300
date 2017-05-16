@@ -17,6 +17,7 @@
                 <?php include 'includes/banner.php'; ?>
                 <h1>
 					Your One Stop Shop for Active Members
+
 				</h1>
 
 			</div> <!--End of banner div-->
@@ -29,6 +30,20 @@
     	
 		<div class="page_body"> <!--Photo Gallery-->
 			<div class="container">
+			<h3>Our Active Members</h3>
+				<div class="admin_login">
+				<ul>
+				<?php
+			        if (isset($_SESSION['admin_user'])) {
+			            echo '<li><a href="logout.php">Logout</a></li>';
+			        } else {
+			            echo '<li><a href="login.php">Admin Login</a></li>';
+			        }
+				?>
+				</ul>
+				</div>
+
+
 			<?php
 				print("<div>");
 
@@ -38,7 +53,25 @@
 			   	//if admin logged in
 				if (isset($_SESSION['admin_user'])) {
 				//put member adding form here
-                    
+                    if((!empty($_POST["option"]) || !empty($_POST["remove"])) && !empty($_POST["submit"])){
+                    	print("Submitted things hwerewerawerqwerqwerqewrqwe");
+		    			if(!empty($_POST["option"])){
+		    				$selected = $_POST["option"];
+		    				foreach ($selected as $attended) {
+		    					$meetingAttend = $mysqli->query("INSERT INTO meeting_attend(date, memberID) VALUES (CURRENT_DATE, '$attended'");
+		    				}
+		    			}if(!empty($_POST["remove"])){
+		    				$removeList = $_POST["remove"];
+		    				print("<div class='forms'>Are you sure you want to delete these members? <br>
+		    					<input type='submit' name='imsure value='Yes'>I'm Sure");
+		    				if(isset($_POST["imsure"])){
+		    					foreach ($removeList as $r) {
+		    						$delete = $mysqli->query("DELETE FROM members WHERE memberID=$r");
+		    						//$changeAuto = $mysqli->query("ALTER TABLE members auto_increment = auto_increment - 1");
+		    					}
+		    				}
+		    			}
+	    			}
                     include 'includes/addMemForm.php';
 						
 				    while($name = $member->fetch_assoc()){
@@ -65,30 +98,11 @@
 				                    <td> <input type='checkbox' name='remove[]' value='$memberID'> Remove Member?</td>
 				                </tr>
 				            </table>");
-					    print("<input type='submit' name='submit' value='Submit'>");
 		    			print("</div>");
 			    	}
+			    	print("<input type='submit' name='submit' value='Submit'>");
 		    			//update attendance and/or remove members
-	    			if((isset($_POST["option"]) || isset($_POST["remove"])) && isset($_POST["submit"])){
-		    			if(!empty($_POST["option"])){
-		    				$selected = $_POST["option"];
-		    				//Add code for uploading a file.
-		    				$insert = $mysqli->query("INSERT INTO meetings(date, agenda) VALUES (CURRENT_DATE, 'figure out how to add file'");
-		    				foreach ($selected as $attended) {
-		    					$meetingAttend = $mysqli->query("INSERT INTO meeting_attend(meetingID, memberID) VALUES (CURRENT_DATE, '$attended'");
-		    				}
-		    			}if(!empty($_POST["remove"])){
-		    				$removeList = $_POST["remove"];
-		    				print("<div class='forms'>Are you sure you want to delete these members? <br>
-		    					<input type='submit' name='imsure value='Yes'>I'm Sure");
-		    				if(isset($_POST["imsure"])){
-		    					foreach ($removeList as $r) {
-		    						$delete = $mysqli->query("DELETE FROM members WHERE memberID=$r");
-		    						//$changeAuto = $mysqli->query("ALTER TABLE members auto_increment = auto_increment - 1");
-		    					}
-		    				}
-		    			}
-	    			}
+	    			
 
 				}else {
 					while($name = $member->fetch_assoc()){

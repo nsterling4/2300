@@ -2,7 +2,11 @@
            
 <?php 
 
-
+                    $nameErr ="";
+                    $emailErr ="";
+                    $affiliationErr ="";
+                    $involvedErr="";
+                    $commentErr="";
 
 
             // checks if the form has been submitted or not
@@ -57,10 +61,10 @@
 
 
                     // EDIT THE 2 LINES BELOW AS REQUIRED
-                    $email_to = "nas95@cornell.edu";
+                    $email_to = "saaccornell@gmail.com";
                     $email_subject = "CONTACT US";
 
-                    if (nameErr==="" && emailErr===""){
+                    if ($nameErr==="" && $emailErr===""){
 
                         $email_message="Name: $name \n Email: $email \n Affiliation: $affiliation \n Involved: $involved \n Comment: $info";
 
