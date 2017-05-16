@@ -86,17 +86,17 @@
 						
 						if( password_verify( $post_password, $db_hash_password ) ) {
 							$db_username = $row['username'];
-							$_SESSION['valid_user'] = $db_username;
+							$_SESSION['admin_user'] = $db_username;
 							echo "<META HTTP-EQUIV=Refresh CONTENT='login.php'>";
 						}
 					} 
 					
 					$mysqli->close();
 					
-					if ( isset($_SESSION['valid_user'] ) ) {
-						print("<p>You have successfully logged into this site<p>");
+					if ( isset($_SESSION['admin_user'] ) ) {
+						print("<p>You're Logged In As An Admin<p>");
 					} else {
-						echo '<p>You did not login successfully.</p>';
+						echo '<p>Admin Login Failed. Try Again If You Are An Admin</p>';
 					}
 				
 				} //end if isset username and password

@@ -20,8 +20,8 @@
 
 			<?php
     	  		include 'includes/navbar.php';
-				if (isset($_SESSION['valid_user'])) {
-					unset($_SESSION['valid_user']);
+				if (isset($_SESSION['admin_user'])) {
+					session_destroy();
 				}	
     		?> 
     	</div> <!-- End of top_bar div -->
@@ -30,13 +30,8 @@
 			<div class="container">
 
 				<?php
-					if ( isset($_SESSION['valid_user'] )) {
-						print("<p>You haven't logged out.</p>");
-						print("<p>Go to our <a href='logout.php'>Logout Page</a></p>");
-					} else {
-						print("<p>Thanks for using our page!</p>");
-						print("<p>Return to our <a href='login.php'>Login Page</a></p>");						
-					}
+					print("<p>Logged Out</p>");
+					print("<p>To log back in, Click <a href='login.php'>Here</a></p>");
 				?>
 
 		    </div>  <!-- End of search_container div -->  	   
