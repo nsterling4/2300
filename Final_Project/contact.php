@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title>Contact Us</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link href="https://fonts.googleapis.com/css?family=Cormorant+SC|Linden+Hill|PT+Serif:700i" rel="stylesheet">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="includes/scripts.js"></script>
@@ -27,14 +28,6 @@
 
 		<div class="page_body"> <!--Photo Gallery-->
 			<div class="container">
-				<?php
-					if (isset($_SESSION['valid_user'])) {
-						echo '<p id="welcome_p">You are currently logged in. Unfortunately this page is still in construction, please try again later.</p>';
-					}
-					else {
-						echo '<p id="welcome_p">This page is still in construction. For more features please <a href="login.php">Login</a></p>';
-					}
-				?>  
 				<form method="post" class="forms" action="mail.php">
 						Name: <input type="text" name="name">
 						E-mail: <input type="text" name="email"><br><br>
