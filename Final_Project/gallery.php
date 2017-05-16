@@ -14,6 +14,7 @@
 	<div class="contents">
 		<div class ="top_bar"> <!-- Contains header and Nav Bar -->
 			<div class ="banner">
+                <?php include 'includes/banner.php'; ?>
 				<h1>
 					Check Us Out
 				</h1>

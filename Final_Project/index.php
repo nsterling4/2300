@@ -36,7 +36,7 @@
                         <input type="submit" value="search" name="search"> <br>
                         Need More Fields? -<a href="advSearch.php">Advanced Search</a>
                     </form>
-        </div>
+                </div>
 			</div> <!--End of banner div-->
 			
 
@@ -89,6 +89,7 @@
       }
     ?>
         
+
     <script>
        //Array of images which you want to show: Use path you want.
       var images=new Array('images/2017Reps.jpg','images/2016Reps.jpg','images/2015Reps.jpg', 'images/2014Reps.jpg');
