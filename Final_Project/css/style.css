@@ -166,12 +166,13 @@ form {
 
 .forms {
     text-align: center;
-    width: 40%;
+    width: 42%;
     background: #E0E0E0;
     border-radius: 50px;
     margin: auto;
     margin-top: 1%;
     margin-bottom: 1%;
+    display: block;
 }
 
 .g-recaptcha {
@@ -193,6 +194,10 @@ form {
     display: block;
     margin: auto;
     margin-top: 5px; 
+}
+
+.error {
+    color: red;
 }
 
 table {
