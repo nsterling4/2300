@@ -28,10 +28,22 @@
 
 		<div class="page_body"> <!--Photo Gallery-->
 			<div class="container">
+				<?php
+    	  			include 'includes/mail.php';
+    			?> 
+				
 				<form method="post" class="forms">
+						<p><span class="error">* required field.</span></p>
+
 						Name: <input type="text" name="name">
-						E-mail: <input type="text" name="email"><br><br>
-						What is your affiliation to Cornell?<select name="affiliation"> 
+						<span class="error">* <?php echo $nameErr;?></span><br>
+
+						E-mail: <input type="text" name="email">
+						  <span class="error">* <?php echo $emailErr;?></span><br><br>
+
+						What is your affiliation to Cornell? <span class="error">*</span>
+						<select name="affiliation"> 
+							<option value="empty"></option>
 							<option value="na">No Affiliation</option>
 	            		    <option value="freshman">Freshman</option>
 	                		<option value="sophmore">Sophmore</option>
@@ -40,61 +52,37 @@
 	                		<option value="grad">Graduate Student</option>
 	                		<option value="alum">Alumni</option>
 	                		<option value="employee">Employee</option>
-	            		</select> <br><br>
-	            		Do you currently or previously have any direct involvement within Cornell Athletics?
+	            		</select>
+	            		<span class="error"><?php echo $affiliationErr;?></span> <br><br>
+
+	            		Do you currently or previously have any direct involvement within Cornell Athletics? <span class="error">*</span><br><br>
 	 						<input type="radio" name="involved" value="yes">Yes
-	  						<input type="radio" name="involved" value="no">No <br><br>
-	  					Leave us a comment, question, concern or suggestion: <br><textarea name="comment" rows="5" cols="40"></textarea> <br><br>
+	  						<input type="radio" name="involved" value="no">No 
+	  						<span class="error"><?php echo "<br>$involvedErr";?></span><br>
+
+	  					Leave us a comment, question, concern or suggestion: <span class="error">*</span>
+	  					 <br><textarea name="comment" rows="5" cols="40"></textarea> 
+	  					<span class="error"><?php echo "<br>$commentErr";?></span><br><br>
 
 	  					<div class="g-recaptcha" data-sitekey="6LfZhCEUAAAAAByow4okr6-BdKw7Pc6S6dPHdLDP"></div> <br><br>
 
 	  					<input type="submit" name="submit" value="Submit"/> 
 
-				</form> 	
+				</form> 
+
+
+
+
+
 
 		    </div>  <!-- End of container div -->  	 
 
 
 
-		    <?php 
 
 
 
-            // checks if the form has been submitted or not
-          	if(isset($_POST["submit"])) {
 
-                    $name= filter_input( INPUT_POST, trim('name'), FILTER_SANITIZE_STRING );
-                    $email= filter_input( INPUT_POST, trim('email'), FILTER_SANITIZE_STRING );
-                    $affiliation= filter_input( INPUT_POST, trim('affiliation'), FILTER_SANITIZE_STRING );
-                    $involved= filter_input( INPUT_POST, trim('involved'), FILTER_SANITIZE_STRING );
-                    $info= filter_input( INPUT_POST, trim('comment'), FILTER_SANITIZE_STRING );
-
-
-                    echo "Name: $name \n Email: $email \n Affiliation: $affiliation \n Involved: $involved \n Comment: $info";
-
-
-                        // EDIT THE 2 LINES BELOW AS REQUIRED
-    		$email_to = "nas95@cornell.edu";
-    		$email_subject = "CONTACT US";
-
-
-    		$email_message="Name: $name \n Email: $email \n Affiliation: $affiliation \n Involved: $involved \n Comment: $info";
-
-    		echo "Message: $email_message";
-  
- 
-    // $email_message .= "Name: ".clean_string($name)."\n";
-    // $email_message .= "Email: ".clean_string($email)."\n";
-    // $email_message .= "Affiliation: ".clean_string($affiliation)."\n";
-    // $email_message .= "Involved: ".clean_string($involved)."\n";
-    // $email_message .= "Comments: ".clean_string($info)."\n";
- 
-// create email headers
-	mail($email_to, $email_subject, $email_message); 
- 
-      }
-        
-?>  
 
 
 
