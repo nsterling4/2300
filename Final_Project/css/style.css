@@ -7,7 +7,11 @@ html, body {
     padding: 0;
     background-color: #F7F7F7; /*Light Grey*/
     vertical-align: baseline;
+    font-family: 'Linden Hill', serif;
+    height: 100%;
 }
+
+
 
 
 
@@ -20,16 +24,22 @@ html, body {
     margin: 0;
     width: 100%;
     color: #F7F7F7; /*Light Grey*/
+    font-family: 'PT Serif', serif;
 }
+
+
+
+
+
 
  h2 {
 
     color: #B31B1B; /*Cornell Red*/
     text-align: center;
-    padding-top: 10px;
     padding-bottom: 10px;
     margin: 0;
     width: 100%;
+    display: inline-block;
 }
 
 footer {
@@ -38,7 +48,13 @@ footer {
     margin-bottom: 0;
     width: 100%;
     padding: 3px;
+    font-family: 'Cormorant SC', serif;
+    height:134px;
+    position:absolute;
+    bottom:0;
+    left:0;
 }
+
 
 footer p {
     text-align: center;
@@ -54,6 +70,15 @@ form {
     padding: 20px;
 }
 
+.contents {
+    min-height:100%;
+    position:relative;
+}
+
+.page_body {
+    padding-bottom:134px; /* Height of the footer element */
+}
+
 
 
 .nav_bar{
@@ -61,6 +86,7 @@ form {
     width: 100%;
     padding: 10px 0px 10px 0px;
     margin: 0;
+    font-family: 'Cormorant SC', serif;
 }
 
 
@@ -88,6 +114,7 @@ form {
     text-align: center;
     padding: 14px 20px;
     text-decoration: none;
+    font-size: 20px;
 }
 
 .nav_bar li a:hover { 
@@ -96,30 +123,33 @@ form {
 }
 
 #main {
-    margin-left: 247px;
+    margin-left: 5px;
 }
 
 #log {
     float: right;
     margin-right: 10px;
     border-radius: 30px;
+    margin-top: 8px;
 }
 
 #log li a {
     padding: 14px 14px;
+
 }
 
     
 .logo {
     float: right;
     /*height: 70px;*/
-    margin-right: 10px;
+    margin-right: 9px;
 }
 
 .bear_logo {
     float: left;
-    height: 50px;
-    margin-left: 10px;
+    height: 148px;
+    margin-left: 2px;
+    margin-top: -38px;
 }
 
 #welcome_p {
@@ -236,3 +266,173 @@ td {
     margin: auto;
     text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 480px) {
+
+    #log {
+        display: grid;
+}
+
+   /* body {
+        background-color: #E7CC8F;
+    }
+
+    .banner img {
+        display: none;
+    }
+
+    .nav_bar {
+
+        background: transparent;
+        padding: 0;
+        position: static;
+
+    }
+
+    .nav_bar li{
+        float: none;
+        border-top: 1px solid #000; 
+        border-bottom: 1px solid #000; 
+
+    }
+
+    #mobile {
+        padding: 14px 20px;
+    }
+
+    .nav_bar li a {
+        padding: 5px;
+    }
+
+    .nav_bar ul{
+        display: block;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: none;
+    }   
+
+    #main {
+    background-color: #000; 
+    border: 1px;
+    float: right;
+    padding:0; 
+} 
+    
+    #header{
+        display: none;
+        width: 100%;
+        margin: 0;
+        position: static;
+        font-size: 70%;
+    }
+
+    #header1 {
+
+        display: block;
+    }
+    .top_bar_main {
+        margin: 0; 
+        width: 100%;
+        top: 12%;
+    }
+
+    .page_body_main {
+        margin-top: 33%;
+    }
+
+    #applefest_map {
+        width: 90%;
+        display: table;
+        margin: auto;
+    }
+
+    .page_body {
+        margin-top: 6px;
+    }
+
+    .top_bar {
+        position: static;
+    }*/
+
+}
+
+/* between 481 and 768 */ 
+@media (min-width: 481px) and (max-width: 768px) { 
+
+
+/*    .nav_bar {
+        padding: 0;
+
+    }
+
+    .nav_bar li{
+        float: none;
+        border-top: 1px solid #000; 
+        border-bottom: 1px solid #000; 
+
+    }
+
+    #mobile {
+        padding: 14px 20px;
+    }
+
+    .nav_bar li a {
+        padding: 5px;
+    }
+
+    .nav_bar ul{
+        display: block;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: none;
+    }   
+
+    #main {
+    background-color: transparent;  
+    width: 70%;
+} 
+
+    .page_body {
+        margin-top: 190px;
+    }*/
+
+}
+/* between 769 and 992 */ 
+@media (min-width: 769px) and (max-width: 992px) {
+
+}
+/* between 993 and 1200 */ 
+@media (min-width: 993px) and (max-width: 1200px) {
+
+    #log {
+    margin-top: -169px;
+}
+ 
+}
+/* greater than 1201 */ 
+@media (min-width: 1201px) {
+
+}
+
+
+
+
+
+
+
+
+
+
