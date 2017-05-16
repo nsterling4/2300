@@ -53,6 +53,18 @@ button {
     border-radius: 50px;
 }
 
+ h3 {
+
+    color: #B31B1B; /*Cornell Red*/
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin: auto;
+    width: 30%;
+    background-color: #F7F7F7;
+    border-radius: 50px;
+}
+
 #dropdownsearch {
     display: none;
 }
@@ -66,7 +78,7 @@ footer {
     font-family: 'Cormorant SC', serif;
     height:134px;
     position:absolute;
-    bottom:0;
+    bottom:-140px;
     left:0;
 }
 
@@ -93,7 +105,7 @@ form {
 }
 
 .page_body {
-    padding-bottom:134px; /* Height of the footer element */
+    /*padding-bottom:134px;  Height of the footer element */
     /*background-size: cover;*/
 }
 
