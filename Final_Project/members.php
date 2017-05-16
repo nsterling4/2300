@@ -23,9 +23,14 @@
     	  		include 'includes/navbar.php';
     		?> 
     	</div> <!-- End of top_bar div -->
-    	<!-- Membership info displayed in a table -->
-    	<div>
-    		<?php
+    	
+		<div class="page_body"> <!--Photo Gallery-->
+			<div class="container">
+			<?php
+				if (isset($_SESSION['valid_user'])) {
+					// Membership info displayed in a table
+    			print("<div>");
+
     			$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 			    $member = $mysqli->query("SELECT DISTINCT memberID, first_name, last_name, sport FROM members");
 
@@ -34,23 +39,33 @@
 			    	$f_name = $name['first_name'];
             		$l_name = $name['last_name'];
             		$sport = $name['sport'];
+            		$photoID = $name['photoID'];
+            		$memberID = $name["memberID"];
+            		if(!empty($photoID)){
+            			$file_path = $mysqli->query("SELECT picPath FROM photos WHERE photoID = $photoID");
+            			$photo = "<img src='$file_path'alt='$f_name'>";
+            		}
+
 			        print( 
 			            "<table> 
 			                <tr>
+			                	<td> $photo </td>
 			                    <td> $f_name </td>
 			                    <td> $l_name </td> 
 			                    <td> $sport </td>
+			                    <td>  <input type='checkbox' name='option[]'' value='$memberID'> In Attendance? </td>
 			                </tr>
 			            </table>");
 			    }
-    		?>
-    	</div>
+			    print("<input type='submit' name='submit' value='Submit'>");
+    			print("</div>");
+    			if(isset($_POST["option"]) && isset($_POST["submit"])){
+    				$selected = $_POST["option"];
+    				foreach ($selected as $attneded) {
+    					$mysqli->query("UPDATE members SET number_attend = number_attned+1 WHERE members.memberID = '$selected[$i]'");
+    				}
+    			}
 
-		<div class="page_body"> <!--Photo Gallery-->
-			<div class="container">
-			<?php
-				if (isset($_SESSION['valid_user'])) {
-					echo '<p id="welcome_p">You are currently logged in. Unfortunately this page is still in construction, please try again later.</p>';
 				}
 				else {
 					echo '<p id="welcome_p">This page is still in construction. For more features please <a href="login.php">Login</a></p>';
