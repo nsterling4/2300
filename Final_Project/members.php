@@ -33,9 +33,9 @@
 					echo "Admin Login";
 					session_start();
 			        if (isset($_SESSION['valid_user'])) {
-			            echo '<li><a href="inludes/logout.php">Logout</a></li>';
+			            echo '<li><a href="logout.php">Logout</a></li>';
 			        } else {
-			            echo '<li><a href="includes/login.php">Login</a></li>';
+			            echo '<li><a href="login.php">Login</a></li>';
 			        }
 				?>
 				</ul>
