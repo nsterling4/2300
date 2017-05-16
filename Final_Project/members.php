@@ -34,9 +34,16 @@
 			    	$f_name = $name['first_name'];
             		$l_name = $name['last_name'];
             		$sport = $name['sport'];
+            		$photoID = $name['photoID'];
+            		if(!empty($photoID){
+            			$file_path = $mysqli->query("SELECT picPath FROM photos WHERE photoID = $photoID");
+            			$photo = <img src='$file_path'alt='$f_name'>;
+            		}
+
 			        print( 
 			            "<table> 
 			                <tr>
+			                	<td> $photo </td>
 			                    <td> $f_name </td>
 			                    <td> $l_name </td> 
 			                    <td> $sport </td>
