@@ -222,7 +222,7 @@ table {
     color: white;
     background-color: #333333;
     font-family: 'Slabo 27px', serif;
-    margin-left: 100px;
+    margin-left: 142px;
 }
 
 td {
@@ -233,6 +233,8 @@ td {
     height: 50px;
     padding-left: 15px;
 }
+
+
 
 /*all .gallery stuff pertains to album thumbnails*/
 #gallery_thumbnails{
