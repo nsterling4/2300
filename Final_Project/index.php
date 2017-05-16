@@ -36,7 +36,7 @@
                         <input type="submit" value="search" name="search"> <br>
                         Need More Fields? -<a href="advSearch.php">Advanced Search</a>
                     </form>
-        </div>
+                </div>
 			</div> <!--End of banner div-->
 			
 
@@ -96,19 +96,20 @@
 }(document, "script", "twitter-wjs"));</script> -->
         
          <script>
-             //Array of images which you want to show: Use path you want.
-            var images=new Array('images/2017Reps.jpg','images/2016Reps.jpg','images/2015Reps.jpg', 'images/2014Reps.jpg');
-             var nextimage=0;
-             doSlideshow();
+                //Array of images which you want to show: Use path you want.
+                var images=new Array('images/2017Reps.jpg','images/2016Reps.jpg','images/2015Reps.jpg', 'images/2014Reps.jpg');
+                var nextimage=0;
+                doSlideshow();
 
-             function doSlideshow(){
-                 if(nextimage>=images.length){nextimage=0;}
-                 $('.page_body')
-                     .css('background-image','url("'+images[nextimage++]+'")')
-                     .fadeIn("slow",function(){
+                function doSlideshow(){
+                    if(nextimage>=images.length){nextimage=0;}
+                    $('.page_body')
+                        .css('background-image','url("'+images[nextimage++]+'")')
+                        .fadeIn("slow",function(){
                         setTimeout(doSlideshow,4000);
-                 });
-             }
+                    });
+                }
+            
         </script>
         <script type="text/javascript">
                     $("#quicksearch").click(function(){

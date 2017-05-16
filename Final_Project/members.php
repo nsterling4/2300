@@ -14,9 +14,11 @@
 	<div class="contents">
 		<div class ="top_bar"> <!-- Contains header and Nav Bar -->
 			<div class ="banner">
-				<h1>
+                <?php include 'includes/banner.php'; ?>
+                <h1>
 					Your One Stop Shop for Active Members
 				</h1>
+
 			</div> <!--End of banner div-->
 			
 
