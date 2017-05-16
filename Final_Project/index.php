@@ -4,7 +4,6 @@
 		<meta charset="utf-8">
 		<title>SAAC</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css?v=221">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link href="https://fonts.googleapis.com/css?family=Cormorant+SC|Linden+Hill|PT+Serif:700i" rel="stylesheet">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -15,12 +14,29 @@
 
 		<div class ="top_bar"> <!-- Contains header and Nav Bar -->
 			<div class ="banner">
-
+                <span><button id="quicksearch">Search Site</button>
+                </span>
 				<h1> 
 					Welcome to SAAC 	
-<!-- 					<img class="logo" src="images/cornell_white.jpeg" alt="Cornell Logo" title="Cornell University">  -->		         
-				</h1>
-
+<!-- 					<img class="logo" src="images/cornell_white.jpeg" alt="Cornell Logo" title="Cornell University">  -->
+                </h1>
+                
+                <div id="dropdownsearch">
+                    <form action="search.php" method="post"> 
+                        <br> Search 
+                        <select name ="searchbar" required>
+                            <option value="all">Entire Site</option>
+                            <option value="reps">SAAC Members</option>
+                            <option value="articles">Articles</option>
+                            <option value="events">Events</option>
+                            <option value="albums">Albums</option>                        
+                        </select>
+                        for :
+                        <input type="text" name="searchterm" required>
+                        <input type="submit" value="search" name="search"> <br>
+                        Need More Fields? -<a href="advSearch.php">Advanced Search</a>
+                    </form>
+        </div>
 			</div> <!--End of banner div-->
 			
 
@@ -60,23 +76,25 @@
                 w3.slideshow(".nature");
                 </script>
             -->
-            <h2>Meeting Agendas</h2>
-            <div>
-            <?php
-              $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-              $pdfs = $mysqli->query("SELECT * FROM meetings");
-              while($display = $pdfs->fetch_assoc()){
-                $filePath = $display['agendaPath'];
-                $dateMeeting = $display['date'];
-                $link = "<a href=\"$filePath.pdf\" target=\"_blank\"> $dateMeeting Meeting Agenda </a>";
-                //
-                print("$link");
-                //
-              }
-            ?>
-            </div>
 		</div> <!--End of page_body div-->
-             
+        <!-- twitter api to link timeline on side of homepage
+    <script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script> -->
+        
          <script>
              //Array of images which you want to show: Use path you want.
             var images=new Array('images/2017Reps.jpg','images/2016Reps.jpg','images/2015Reps.jpg', 'images/2014Reps.jpg');
@@ -92,10 +110,12 @@
                  });
              }
         </script>
-
-        <!-- display the links for the  -->
-        
-
+        <script type="text/javascript">
+                    $("#quicksearch").click(function(){
+                        $("#dropdownsearch").toggle('display');
+                        console.log("LOL so close");
+                    });
+        </script>
 		<footer>
 			<?php
     	  		include 'includes/bottom.php';
