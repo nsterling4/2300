@@ -3,15 +3,12 @@
 	<head>
 		<meta charset="utf-8">
 		<title>SAAC</title>
-		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css?v=221">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="includes/scripts.js"></script>
 	</head>
 
-
-
-<body>
 	<div class="contents">
 
 		<div class ="top_bar"> <!-- Contains header and Nav Bar -->
@@ -79,12 +76,29 @@
 
   return t;
 }(document, "script", "twitter-wjs"));</script> -->
+        
+         <script>
+             //Array of images which you want to show: Use path you want.
+            var images=new Array('images/2017Reps.jpg','images/2016Reps.jpg','images/2015Reps.jpg', 'images/2014Reps.jpg');
+             var nextimage=0;
+             doSlideshow();
+
+             function doSlideshow(){
+                 if(nextimage>=images.length){nextimage=0;}
+                 $('.page_body')
+                     .css('background-image','url("'+images[nextimage++]+'")')
+                     .fadeIn("slow",function(){
+                        setTimeout(doSlideshow,4000);
+                 });
+             }
+        </script>
 		<footer>
 			<?php
     	  		include 'includes/bottom.php';
     		?> 
 		</footer> <!-- end of footer div -->   
 	</div> <!-- end of contents div -->
+    
 </body>
 
 </html>
