@@ -126,14 +126,14 @@ form {
     margin-left: 5px;
 }
 
-#log {
+#desk {
     float: right;
     margin-right: 10px;
     border-radius: 30px;
     margin-top: 8px;
 }
 
-#log li a {
+#desk li a {
     padding: 14px 14px;
 
 }
@@ -280,17 +280,6 @@ td {
 
 @media (max-width: 480px) {
 
-    #log {
-        display: grid;
-}
-
-   /* body {
-        background-color: #E7CC8F;
-    }
-
-    .banner img {
-        display: none;
-    }
 
     .nav_bar {
 
@@ -307,9 +296,6 @@ td {
 
     }
 
-    #mobile {
-        padding: 14px 20px;
-    }
 
     .nav_bar li a {
         padding: 5px;
@@ -318,53 +304,35 @@ td {
     .nav_bar ul{
         display: block;
     }
-    
-    .dropdown:hover .dropdown-content {
+
+    .bear_logo {
         display: none;
-    }   
+    }
 
-    #main {
-    background-color: #000; 
-    border: 1px;
-    float: right;
-    padding:0; 
-} 
-    
-    #header{
+    #desk {
         display: none;
-        width: 100%;
-        margin: 0;
-        position: static;
-        font-size: 70%;
     }
 
-    #header1 {
-
-        display: block;
-    }
-    .top_bar_main {
-        margin: 0; 
-        width: 100%;
-        top: 12%;
+    #tab {
+        display: none;
     }
 
-    .page_body_main {
-        margin-top: 33%;
+    #mob {
+        float: right;
+        margin-right: 10px;
+        border-radius: 30px;
+        margin-top: -296px;
     }
 
-    #applefest_map {
-        width: 90%;
-        display: table;
-        margin: auto;
+    h1 {
+        font-size: 20px;
     }
 
-    .page_body {
-        margin-top: 6px;
+    h2 {
+        padding-top: 2%;
     }
 
-    .top_bar {
-        position: static;
-    }*/
+   
 
 }
 
@@ -372,7 +340,7 @@ td {
 @media (min-width: 481px) and (max-width: 768px) { 
 
 
-/*    .nav_bar {
+    .nav_bar {
         padding: 0;
 
     }
@@ -384,10 +352,6 @@ td {
 
     }
 
-    #mobile {
-        padding: 14px 20px;
-    }
-
     .nav_bar li a {
         padding: 5px;
     }
@@ -395,35 +359,101 @@ td {
     .nav_bar ul{
         display: block;
     }
-    
-    .dropdown:hover .dropdown-content {
-        display: none;
-    }   
 
+    .bear_logo {
+        float: left;
+        height: 77px;
+        margin-left: 2px;
+        margin-top: -70px;
+}
+    
     #main {
-    background-color: transparent;  
-    width: 70%;
-} 
+        width: 70%;
+        margin-left: 15%; 
+    } 
 
     .page_body {
         margin-top: 190px;
-    }*/
+    }
+
+
+    h1 {
+        font-size: 24px;
+    }
+
+    #desk {
+        display: none;
+    }
+
+    #tab {
+        float: right;
+        margin-right: 10px;
+        border-radius: 30px;
+        margin-top: -302px;
+    }
+
+    #mob {
+        display: none;
+    }
 
 }
 /* between 769 and 992 */ 
 @media (min-width: 769px) and (max-width: 992px) {
 
+    .bear_logo {
+        float: left;
+        height: 80px;
+        margin-left: 2px;
+        margin-top: -90px;
+    }
+
+    #desk {
+        margin-top: -129px;
+    }
+
+    #tab {
+        display: none;
+    }
+
+    #mob {
+        display: none;
+    }
+
+    #main {
+        margin-left: 9%;
+    }
+
+    .nav_bar li a {
+        padding: 14px 14px;
+    }
+
 }
 /* between 993 and 1200 */ 
 @media (min-width: 993px) and (max-width: 1200px) {
 
-    #log {
-    margin-top: -169px;
-}
+    #desk {
+    margin-top: -129px;
+    }
+
+    #tab {
+        display: none;
+    }
+
+    #mob {
+        display: none;
+    }
  
 }
 /* greater than 1201 */ 
 @media (min-width: 1201px) {
+
+    #tab {
+        display: none;
+    }
+
+    #mob {
+        display: none;
+    }
 
 }
 
