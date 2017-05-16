@@ -1,6 +1,15 @@
 <?php
+if (isset($_POST['name'])){
 session_start();
-$name = $_POST['name'];
-$_SESSION['name'] = "hello";
-return 'name set';
+$_SESSION['name'] = $_POST['name'];
+}
+
+if (isset($_POST['blank'])){
+	session_start();
+	unset($_SESSION['name']);
+	session_destroy();
+}
+
+
 ?>
+
