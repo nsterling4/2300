@@ -16,7 +16,7 @@
 		<div class ="top_bar"> <!-- Contains header and Nav Bar -->
 			<div class ="banner">
 				<h1>
-					Please Login
+					Admin Login
 				</h1>
 			</div> <!--End of banner div-->
 			

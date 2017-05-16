@@ -57,7 +57,7 @@
 				
 		    </div> 
 		</div> 
-
+    <h3>Links to Meeting Agendas</h3>
     <?php
       $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
       $pdfs = $mysqli->query("SELECT * FROM meetings");
