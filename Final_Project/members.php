@@ -82,18 +82,19 @@
 		    				// ALTER TABLE `members` auto_increment = 3;
 		    			}
 
-				}else {
-					print( 
-				            "<table> 
-				                <tr>
-				                	<td> $photo </td>
-				                    <td> $f_name </td>
-				                    <td> $l_name </td> 
-				                    <td> $sport </td>
-				                    <td> $year </td>
-				                </tr>
-				            </table>");
-		    			print("</div>");
+					}else {
+						print( 
+					            "<table> 
+					                <tr>
+					                	<td> $photo </td>
+					                    <td> $f_name </td>
+					                    <td> $l_name </td> 
+					                    <td> $sport </td>
+					                    <td> $year </td>
+					                </tr>
+					            </table>");
+			    			print("</div>");
+					}
 				}
 			?> 
 		    </div>  <!-- End of gallery_container div -->  	   
