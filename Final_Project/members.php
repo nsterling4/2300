@@ -30,7 +30,7 @@
 			<h3>Our Active Members</h3>
 				<ul>
 				<?php
-					echo "ADMIN ACCESS ONLY";
+					echo "Admin Login";
 					session_start();
 			        if (isset($_SESSION['valid_user'])) {
 			            echo '<li><a href="inludes/logout.php">Logout</a></li>';

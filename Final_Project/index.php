@@ -57,32 +57,43 @@
 				
 		    </div> 
 		</div> 
-        
-         <script>
-             //Array of images which you want to show: Use path you want.
-            var images=new Array('images/2017Reps.jpg','images/2016Reps.jpg','images/2015Reps.jpg', 'images/2014Reps.jpg');
-             var nextimage=0;
-             doSlideshow();
 
-             function doSlideshow(){
-                 if(nextimage>=images.length){nextimage=0;}
-                 $('.page_body')
-                     .css('background-image','url("'+images[nextimage++]+'")')
-                     .fadeIn("slow",function(){
-                        setTimeout(doSlideshow,4000);
-                 });
-             }
-        </script>
-        <script type="text/javascript">
-                    $("#quicksearch").click(function(){
-                        $("#dropdownsearch").toggle('display');
-                        console.log("LOL so close");
-                    });
-        </script>
+    <?php
+      $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+      $pdfs = $mysqli->query("SELECT * FROM meetings");
+      while($display = $pdfs->fetch_assoc()){
+        $filePath = $display['agendaPath'];
+        $dateMeeting = $display['date'];
+        $link = "<a href=\"$filePath.pdf\" target=\"_blank\"> $dateMeeting Meeting Agenda </a>";
+        print("$link");
+      }
+    ?>
+        
+    <script>
+       //Array of images which you want to show: Use path you want.
+      var images=new Array('images/2017Reps.jpg','images/2016Reps.jpg','images/2015Reps.jpg', 'images/2014Reps.jpg');
+      var nextimage=0;
+      doSlideshow();
+
+      function doSlideshow(){
+        if(nextimage>=images.length){nextimage=0;}
+          $('.page_body')
+            .css('background-image','url("'+images[nextimage++]+'")')
+            .fadeIn("slow",function(){
+              setTimeout(doSlideshow,4000);
+            });
+      }
+    </script>
+    <script type="text/javascript">
+      $("#quicksearch").click(function(){
+        $("#dropdownsearch").toggle('display');
+        console.log("LOL so close");
+      });
+    </script>
 		<footer>
 			<?php
-    	  		include 'includes/bottom.php';
-    		?> 
+    	  include 'includes/bottom.php';
+    	?> 
 		</footer> <!-- end of footer div -->   
 	</div> <!-- end of contents div -->
     
