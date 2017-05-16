@@ -66,7 +66,12 @@
               $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
               $pdfs = $mysqli->query("SELECT * FROM meetings");
               while($display = $pdfs->fetch_assoc()){
-                //print ("<a href='$display['agendaPath'].pdf' target='_blank'> $display['date'] Meeting Agenda </a>");
+                $filePath = $display['agendaPath'];
+                $dateMeeting = $display['date'];
+                $link = "<a href=\"$filePath.pdf\" target=\"_blank\"> $dateMeeting Meeting Agenda </a>";
+                //
+                print("$link");
+                //
               }
             ?>
             </div>
