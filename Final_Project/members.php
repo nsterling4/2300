@@ -15,7 +15,7 @@
 		<div class ="top_bar"> <!-- Contains header and Nav Bar -->
 			<div class ="banner">
 				<h1>
-					Your One Stop Shop for Active Members
+					Members
 				</h1>
 			</div> <!--End of banner div-->
 			
@@ -27,6 +27,7 @@
     	
 		<div class="page_body"> <!--Photo Gallery-->
 			<div class="container">
+			<h3>Our Active Members</h3>
 			<?php
 				print("<div>");
 
