@@ -459,12 +459,43 @@ td {
 
 }
 
-
-
-
-
-
-
-
-
-
+/*following code is for rich text editor styling*/
+.font-bold.bold{
+    font-weight: bold;
+}
+#italic{
+    font-style: italic;
+}
+.selected{
+    background-color: orange;
+}
+#openpb{
+    margin: 15px;
+}
+#bold{
+    color: black;
+    display: inline-block;
+}
+#italic{
+    color: black !important;
+    display: inline-block;
+}
+#link{
+    display: inline-block;
+}
+#textEditor{
+    width: 500px;
+    height: 80px;
+    border: 2px solid #CCC;
+    border-radius: 20px;
+    overflow: auto;
+}
+#text{
+    border-radius: 20px;
+    overflow: auto;
+    display: none;
+    padding-left: 10px;
+}
+#controls{
+    margin-bottom: 10px;
+}
