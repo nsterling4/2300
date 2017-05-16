@@ -10,7 +10,7 @@
 
 <body>
 	<?php
-	require_once 'includes/config.php';
+	require_once 'config.php';
 	?>
 	<div class="contents">
 		<div class ="top_bar"> <!-- Contains header and Nav Bar -->
