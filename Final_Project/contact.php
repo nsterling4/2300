@@ -70,7 +70,7 @@
                     $info= filter_input( INPUT_POST, trim('comment'), FILTER_SANITIZE_STRING );
 
 
-                    echo "Name: $name \n Email: $email \n Affiliation: $affiliation \n $Involved: $involved \n Comment: $info";
+                    echo "Name: $name \n Email: $email \n Affiliation: $affiliation \n Involved: $involved \n Comment: $info";
 
 
                         // EDIT THE 2 LINES BELOW AS REQUIRED
