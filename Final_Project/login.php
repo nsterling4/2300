@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Login</title>
+		<title>ADMINS ONLY</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -16,7 +16,7 @@
 		<div class ="top_bar"> <!-- Contains header and Nav Bar -->
 			<div class ="banner">
 				<h1>
-					Please Login
+					Admin Login
 				</h1>
 			</div> <!--End of banner div-->
 			
