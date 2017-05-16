@@ -58,6 +58,26 @@
 		    </div> 
 		</div> 
     <h3>Links to Meeting Agendas</h3>
+    <!-- upload pdf files for agendas -->
+    <form method='post' enctype='multipart/form-data'>
+      <input type='file' id='meetingAgenda' name='PDF of Agenda'></p>
+      <input type='text' id='meetingDate' name='meetingDate' placeholder="00/00/000"> Date of the Meeting</p>
+      <input type='submit' value='Upload Agenda' name='submit'></p>
+    </form>");
+
+    <?php
+      $newPDF = $_FILES['meetingAgenda'];
+        if($newPDF['error'] == 0){
+          $tempName = $newPDF['tmp_name'];
+          $title = $meetingDate;
+          $filepath = "agendas/$title";
+          move_uploaded_file($tempName, "$filepath");
+          print("<p>Uploaded the file to the server folder successfully</p>");
+        }else{
+          print("Problem uploading file");
+        }
+    ?>
+
     <?php
       $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
       $pdfs = $mysqli->query("SELECT * FROM meetings");

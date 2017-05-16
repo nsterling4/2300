@@ -56,11 +56,39 @@
 						   		</div>
 						   		<iframe frameborder="0" id="textEditor"></iframe>
 								<textarea name="text" id="text" rows="6" cols="53"></textarea>
+								<input type="text" value="title" name="title" placeholder="Article Title">
+								<input type="text" value="author" name="author" placeholder="Author Name">
 								<input type="submit" value="submit" name="submit">
 							</div>';
-					}
-					else {
-						echo '<p id="welcome_p">This page is still in construction. For more features please <a href="login.php">Login</a></p>';
+							$mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+							$articles = $mysqli->query("SELECT * FROM articles");
+							$length = $mysqli->query("SELECT count(*) FROM articles");
+							$num = $length ->fetch_assoc();
+							if($num['count(*)'] <1){
+								echo '<p id="welcome_p">Unfortunately there are no articles to see</a></p>';
+							}else{
+								while ($poster = $articles -> fetch_assoc()) {
+									$title = $poster['title'];
+									$author = $poster['author'];
+									$articlePost = $poster['post'];
+									print("<div><h3>$title</h3><br><h4>By $author</h4><br><p>$articlePost</p></div>");
+								}
+						}
+					}else {
+						$mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+						$articles = $mysqli->query("SELECT * FROM articles");
+						$length = $mysqli->query("SELECT count(*) FROM articles");
+						$num = $length ->fetch_assoc();
+						if($num['count(*)'] <1){
+							echo '<p id="welcome_p">Unfortunately there are no articles to see. If you are an Admin, log in on the Members Page</a></p>';
+						}else{
+							while ($poster = $articles -> fetch_assoc()) {
+								$title = $poster['title'];
+								$author = $poster['author'];
+								$articlePost = $poster['post'];
+								print("<div><h3>$title</h3><br><h4>By $author</h4><br><p>$articlePost</p></div>");
+							}
+						}
 					}
 				?> 
 		    </div>  <!-- End of gallery_container div -->  	   

@@ -54,7 +54,6 @@
 				if (isset($_SESSION['admin_user'])) {
 				//put member adding form here
                     if((!empty($_POST["option"]) || !empty($_POST["remove"])) && !empty($_POST["submit"])){
-                    	print("Submitted things hwerewerawerqwerqwerqewrqwe");
 		    			if(!empty($_POST["option"])){
 		    				$selected = $_POST["option"];
 		    				foreach ($selected as $attended) {
