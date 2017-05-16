@@ -63,7 +63,6 @@
 		    				if(isset($_POST["imsure"])){
 		    					foreach ($removeList as $r) {
 		    						$delete = $mysqli->query("DELETE FROM members WHERE memberID=$r");
-		    						//$changeAuto = $mysqli->query("ALTER TABLE members auto_increment = auto_increment - 1");
 		    					}
 		    				}
 		    			}

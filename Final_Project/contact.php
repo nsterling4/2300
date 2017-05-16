@@ -37,7 +37,7 @@
 					if (isset($_SESSION['valid_user'])) {
 						//display rich text form
 						echo '
-<form method="post" class="forms">
+						<form method="post" class="forms">
 						<p><span class="error">* required field.</span></p>
 
 						Name: <input type="text" name="name">

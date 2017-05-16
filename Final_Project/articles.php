@@ -33,45 +33,54 @@
 					if (isset($_SESSION['admin_user'])) {
 						//display rich text form
 						echo '
-							<div class="forms">
-				   				<div class="ze ie"></div>
-						   		<div id="controls">
-						    		<a id="bold" class="font-bold">
-						    		<button type="button">B</button>
-								    </a>&nbsp;&nbsp;&nbsp;
-								    <a id="italic" class="italic">
-								    <button type="button">I</button>
-								    </a>&nbsp;&nbsp;&nbsp;&nbsp;
-								    <a id="link" class="link">
-								    <button type="button">Link</button>
-								    </a>&nbsp;&nbsp;&nbsp;&nbsp;
-								    <select id="fonts" class="g-button">
-									    <option value="Times">Times</option>
-									    <option value="Arial">Arial</option>
-									    <option value="Comic Sans MS">Comic Sans MS</option>
-									    <option value="Courier New">Courier New</option>
-									    <option value="Monotype Corsiva">Monotype</option>
-						    		</select>
-						   		</div>
-						   		<iframe frameborder="0" id="textEditor"></iframe>
-								<textarea name="text" id="text" rows="6" cols="53"></textarea>
-								<input type="text" value="title" name="title" placeholder="Article Title">
-								<input type="text" value="author" name="author" placeholder="Author Name">
-								<input type="submit" value="submit" name="submit">
-							</div>';
-							$mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-							$articles = $mysqli->query("SELECT * FROM articles");
-							$length = $mysqli->query("SELECT count(*) FROM articles");
-							$num = $length ->fetch_assoc();
-							if($num['count(*)'] <1){
-								echo '<p id="welcome_p">Unfortunately there are no articles to see</a></p>';
-							}else{
-								while ($poster = $articles -> fetch_assoc()) {
-									$title = $poster['title'];
-									$author = $poster['author'];
-									$articlePost = $poster['post'];
-									print("<div><h3>$title</h3><br><h4>By $author</h4><br><p>$articlePost</p></div>");
-								}
+							
+								<div class="forms">
+					   				<div class="ze ie"></div>
+							   		<div id="controls">
+							    		<a id="bold" class="font-bold">
+							    		<button type="button">B</button>
+									    </a>&nbsp;&nbsp;&nbsp;
+									    <a id="italic" class="italic">
+									    <button type="button">I</button>
+									    </a>&nbsp;&nbsp;&nbsp;&nbsp;
+									    <a id="link" class="link">
+									    <button type="button">Link</button>
+									    </a>&nbsp;&nbsp;&nbsp;&nbsp;
+									    <select id="fonts" class="g-button">
+										    <option value="Times">Times</option>
+										    <option value="Arial">Arial</option>
+										    <option value="Comic Sans MS">Comic Sans MS</option>
+										    <option value="Courier New">Courier New</option>
+										    <option value="Monotype Corsiva">Monotype</option>
+							    		</select>
+							   		</div>
+							   		<iframe frameborder="0" id="textEditor"></iframe>
+									<textarea name="text" id="text" rows="6" cols="53"></textarea>
+									<input type="text" value="title" name="title" placeholder="Article Title">
+									<input type="text" value="author" name="author" placeholder="Author Name">
+									<input type="submit" value="submit" name="submit">
+								</div>';
+						$mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+						if(isset($_POST['text']) && isset($_POST['submit'])){
+							$title = $_POST['title'];
+							$author = $_POST['author'];
+							$articlePost = $_POST['text'];
+							$publishArticle = $mysqli->query("INSERT INTO articles(articleID, title, post, author) VALUES ('', $title, '$author', '$articlePost'");
+						}elseif(isset($_POST['submit']) && !isset($_POST['text'])){
+							echo '<p id="welcome_p">Unfortunately, your post was not uploaded, please make sure to type something</a></p>';
+						}
+						$articles = $mysqli->query("SELECT * FROM articles");
+						$length = $mysqli->query("SELECT count(*) FROM articles");
+						$num = $length ->fetch_assoc();
+						if($num['count(*)'] <1){
+							echo '<p id="welcome_p">Unfortunately there are no articles to see</a></p>';
+						}else{
+							while ($poster = $articles -> fetch_assoc()) {
+								$title = $poster['title'];
+								$author = $poster['author'];
+								$articlePost = $poster['post'];
+								print("<div><h3>$title</h3><br><h4>By $author</h4><br><p>$articlePost</p></div>");
+							}
 						}
 					}else {
 						$mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
