@@ -199,6 +199,17 @@ form {
     display: block;
 }
 
+
+.cal {
+    text-align: center;
+    width: 60%;
+    background: #E0E0E0;
+    margin: auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    display: block;
+}
+
 .g-recaptcha {
     display: inline-block;
 }

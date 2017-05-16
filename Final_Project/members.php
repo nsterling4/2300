@@ -28,6 +28,19 @@
 		<div class="page_body"> <!--Photo Gallery-->
 			<div class="container">
 			<h3>Our Active Members</h3>
+				<ul>
+				<?php
+					echo "ADMIN ACCESS ONLY";
+					session_start();
+			        if (isset($_SESSION['valid_user'])) {
+			            echo '<li><a href="inludes/logout.php">Logout</a></li>';
+			        } else {
+			            echo '<li><a href="includes/login.php">Login</a></li>';
+			        }
+				?>
+				</ul>
+
+
 			<?php
 				print("<div>");
 
