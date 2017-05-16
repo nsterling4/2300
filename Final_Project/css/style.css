@@ -141,11 +141,15 @@ form {
 }
 
 .admin_login{
-    background: #222222; /*Black*/ 
-    width: 100%;
-    padding: 10px 0px 10px 0px;
+    background: #222222; 
+    width: 13%;
+    padding: 10px 5px 10px 10px;
     margin: 0;
     font-family: 'Cormorant SC', serif;
+    float: right;
+    border-radius: 20px;
+    display: inline-flex;
+    margin-right: 5px;
 }
 
 .admin_login  ul {
