@@ -36,8 +36,8 @@
 			   	//if admin logged in
 				if (isset($_SESSION['admin_user'])) {
 				//put member adding form here
-
-
+                    
+                    include 'includes/addMemForm.php';
 						
 				    while($name = $member->fetch_assoc()){
 				        //print("<div class='memberDisplay'>");
