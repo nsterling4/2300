@@ -11,10 +11,6 @@ html, body {
     height: 100%;
 }
 
-
-
-
-
  h1 {
 
     background: #B31B1B; /*Cornell Red*/
@@ -27,10 +23,22 @@ html, body {
     font-family: 'PT Serif', serif;
 }
 
-
-
-
-
+span {
+    background: #B31B1B;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin: 0;
+    float: left;
+    width: 100%;
+    color: #F7F7F7; /*Light Grey*/
+    font-family: 'PT Serif', serif;
+}
+button {
+    float: right;
+    font-family: 'PT Serif', serif;
+    color: #000000;
+    
+}
 
  h2 {
 
@@ -40,6 +48,10 @@ html, body {
     margin: 0;
     width: 100%;
     display: inline-block;
+}
+
+#dropdownsearch {
+    display: none;
 }
 
 footer {
@@ -61,7 +73,9 @@ footer p {
     margin: 10px;
 }
 
-
+#advsearch {
+    text-align: center;
+}
    
 
 form {
@@ -77,6 +91,7 @@ form {
 
 .page_body {
     padding-bottom:134px; /* Height of the footer element */
+    background-size: cover;
 }
 
 
@@ -152,7 +167,7 @@ form {
     margin-top: -38px;
 }
 
-#welcome_p {
+#welcome_p, #fields{
     text-align: center;
     padding-top: 10%;
     padding-bottom: 10%;
@@ -162,6 +177,12 @@ form {
     margin: auto;
     margin-top: 1%;
     margin-bottom: 1%;
+}
+
+#fields{
+    float: left;
+    margin-left: 3px;
+    padding-top: 3px;
 }
 
 .forms {
@@ -206,7 +227,7 @@ table {
     color: white;
     background-color: #333333;
     font-family: 'Slabo 27px', serif;
-    margin-left: 100px;
+    margin-left: 142px;
 }
 
 td {
@@ -217,6 +238,8 @@ td {
     height: 50px;
     padding-left: 15px;
 }
+
+
 
 /*all .gallery stuff pertains to album thumbnails*/
 #gallery_thumbnails{
@@ -462,12 +485,43 @@ td {
 
 }
 
-
-
-
-
-
-
-
-
-
+/*following code is for rich text editor styling*/
+.font-bold.bold{
+    font-weight: bold;
+}
+#italic{
+    font-style: italic;
+}
+.selected{
+    background-color: orange;
+}
+#openpb{
+    margin: 15px;
+}
+#bold{
+    color: black;
+    display: inline-block;
+}
+#italic{
+    color: black !important;
+    display: inline-block;
+}
+#link{
+    display: inline-block;
+}
+#textEditor{
+    width: 500px;
+    height: 80px;
+    border: 2px solid #CCC;
+    border-radius: 20px;
+    overflow: auto;
+}
+#text{
+    border-radius: 20px;
+    overflow: auto;
+    display: none;
+    padding-left: 10px;
+}
+#controls{
+    margin-bottom: 10px;
+}

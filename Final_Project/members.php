@@ -36,8 +36,8 @@
 			   	//if admin logged in
 				if (isset($_SESSION['admin_user'])) {
 				//put member adding form here
-
-
+                    
+                    include 'includes/addMemForm.php';
 						
 				    while($name = $member->fetch_assoc()){
 				        //print("<div class='memberDisplay'>");
@@ -90,7 +90,7 @@
 
 				}else {
 					while($name = $member->fetch_assoc()){
-				        //print("<div class='memberDisplay'>");
+				        print("<div class='memberDisplay'>");
 				    	$f_name = $name['first_name'];
 	            		$l_name = $name['last_name'];
 	            		if(!empty($name['sport'])){
@@ -100,10 +100,18 @@
 	            		}
 	            		$year = $name['class'];
 	            		$memberID = $name["memberID"];
-						print("<table><tr><td> $f_name </td><td> $l_name </td><td> $sport </td><td> $year </td></tr></table>");
+						print(
+							"<table>
+								<tr>
+									<td> $f_name </td>
+									<td> $l_name </td>
+									<td> $sport </td>
+									<td> $year </td>
+								</tr>
+							</table>");
 			    		print("</div>");
 			    	}
-				}
+				}	
 			?> 
 		    </div>  <!-- End of gallery_container div -->  	   
 			

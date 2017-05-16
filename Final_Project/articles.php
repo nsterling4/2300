@@ -8,6 +8,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="includes/scripts.js"></script>
+		<script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+  		<script src="includes/texteditor.js"></script>
 	</head>
 
 <body>
@@ -27,6 +29,29 @@
 
 		<div class="page_body"> <!--Photo Gallery-->
 			<div class="container">
+				<div class="forms">
+			   		<div class="ze ie"></div>
+			   		<div id="controls">
+			    		<a id="bold" class="font-bold">
+			    		<button type="button">B</button>
+					    </a>&nbsp;&nbsp;&nbsp;
+					    <a id="italic" class="italic">
+					    <button type="button">I</button>
+					    </a>&nbsp;&nbsp;&nbsp;&nbsp;
+					    <a id="link" class="link">
+					    <button type="button">Link</button>
+					    </a>&nbsp;&nbsp;&nbsp;&nbsp;
+					    <select id="fonts" class="g-button">
+						    <option value="Times">Times</option>
+						    <option value="Arial">Arial</option>
+						    <option value="Comic Sans MS">Comic Sans MS</option>
+						    <option value="Courier New">Courier New</option>
+						    <option value="Monotype Corsiva">Monotype</option>
+			    		</select>
+			   		</div>
+			   		<iframe frameborder="0" id="textEditor"></iframe>
+					<textarea name="text" id='text' rows="6" cols="53"></textarea>
+					</div>
 			<?php
 				if (isset($_SESSION['valid_user'])) {
 					echo '<p id="welcome_p">You are currently logged in. Unfortunately this page is still in construction, please try again later.</p>';
