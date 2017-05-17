@@ -51,8 +51,6 @@
 			    $member = $mysqli->query("SELECT DISTINCT memberID, first_name, last_name, sport, class, photoID FROM members");
 
 			    if(isset($_POST["REMOVE"])){
-			    	echo($_SESSION['removeArray'][0]);
-			    	// unset($_SESSION['removeArray']);
 					$removeList = $_SESSION["removeArray"];
 					foreach ($removeList as $r) {
 						$delete = $mysqli->query("DELETE FROM members WHERE members.memberID = $r");
@@ -70,25 +68,29 @@
 
 			   	//if admin logged in
 				if (isset($_SESSION['admin_user'])) {
+
+					//click to see attendance record
+					if(isset($_POST['displayAttendance'])){
+						//redirect to attendance page
+						print('<li><a href="attendance.php">Attendance Records</a></li>');
+					}
+					print("<div class='admin_login'><form method='post'><input type='submit' name='displayAttendance' value='See Attendance'</form></div>");
+
 					//if any members were selected for deleting or attendance
                     if(isset($_POST["option"]) || isset($_POST["remove"]) && isset($_POST["submit"])){
                     	//if members were choosen for attendance
 		    			if(!empty($_POST["option"])){
 		    				$selected = $_POST["option"];
 		    				//check to see if today is actually a valid meeting to check attendance for
-		    				$meetValid = $mysqli->query("SELECT * FROM meetings WHERE meetDate = CURRENT_DATE");
-		    				while ($test = $meetValid->fetch_assoc()) {
-		    					echo 'fuck';
-		    					echo $test['meetDate'];
-		    				}
-		    				
-		    				if(!empty($meetValid)){
+		    				$meetValid = $mysqli->query("SELECT COUNT(*) FROM meetings WHERE meetDate = CURRENT_DATE");
+		    				$helo= $meetValid->fetch_row();
+		    				if($helo[0]>0){
+		    					$today = date("Y-m-d");
 		    					//if valid, go through each member selected and increase their tracked attendance number and create an entry for what meeting they have attended
 			    				foreach ($selected as $attended) {
-
-			    					//meetingAttend code isn't working
-			    					$meetingAttend = $mysqli->query("INSERT INTO meeting_attend(meetDate, memberID) VALUES (CURRENT_DATE, '$attended'");
-			    					//increase works
+			    					//meetingAttend adds into meeting_attend memberID associated with current date as meeting
+			    					$meetingAttend = $mysqli->query("INSERT INTO meeting_attend(meetDate, memberID) VALUES ('$today', '$attended')");
+			    					//increase attendance count
 			    					$increase = $mysqli->query("UPDATE members SET number_attend = number_attend +1 WHERE members.memberID = $attended");
 			    				}
 			    				print("<div class='forms'>Attendance has been taken</div>");
@@ -98,13 +100,12 @@
 		    			}
 		    			//if members were selected to be removed
 		    			if(!empty($_POST["remove"])){
-		    				//this code isn't working, even when it's here. Displays confirmation then after selecting an option, does nothing
 		    				include 'includes/removeMemHelp.php';
 		    			}
 		    			
 	    			}
                     include 'addMemForm.php';
-						
+					$member = $mysqli->query("SELECT DISTINCT memberID, first_name, last_name, sport, class, photoID FROM members");
 				    while($name = $member->fetch_assoc()){
 				        //print("<div class='memberDisplay'>");
 				    	$f_name = $name['first_name'];

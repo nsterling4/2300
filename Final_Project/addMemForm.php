@@ -32,6 +32,15 @@
                             </td>
                         </tr>
                         <tr>
+                            <td><label>Is member an Admin?*:</label></td>
+                            <td>                            
+                                <select name ="admin" required>
+                                    <option name="0">No</option>
+                                    <option name="1">Yes</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
                             <td><label>Image:</label></td>
                             <td>
                                 <p><input type="file" id="new-image" name="newphoto"></p>
@@ -54,44 +63,65 @@
         $lastName = filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_STRING);
         $sport = $_POST['sport'];
         $year = $_POST['Year'];
+        $adminMember = $_POST['admin'];
+
+        //if no file was uploaded with member entry
         if(!file_exists($_FILES['newphoto']['tmp_name']) || !is_uploaded_file($_FILES['newphoto']['tmp_name'])) {
-            echo 'No upload';
-            $memberInsert = $mysqli->query("INSERT INTO members(memberID, first_name, last_name, sport, class, number_attend, photoID, admin) VALUES (NULL, '$firstName', '$lastName', '$sport', '$year', '0', NULL, '0')");
-            echo 'inserted member';
+            if($adminMember === 0){
+                //if not an admin member entry
+                $memberInsert = $mysqli->query("INSERT INTO members(memberID, first_name, last_name, sport, class, number_attend, photoID, admin) VALUES (NULL, '$firstName', '$lastName', '$sport', '$year', '0', NULL, '0')");
+            }
+            else{
+                //if an admin new member entry
+                $memberInsert = $mysqli->query("INSERT INTO members(memberID, first_name, last_name, sport, class, number_attend, photoID, admin) VALUES (NULL, '$firstName', '$lastName', '$sport', '$year', '0', NULL, '1')");
+            }
         }else{
-            echo 'upload';
+            //if a photo was uploaded with member entry
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
             $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
             $credit = filter_input(INPUT_POST, 'credit', FILTER_SANITIZE_STRING);
             $filePath = "";
-            print('failed here 1');
             $newPhoto = $_FILES['newphoto'];
+
+            //no errors, upload the file to server folder
             if($newPhoto['error'] == 0){
                 $tempName = $newPhoto['tmp_name'];
                 $filePath = "images/$title";
                 move_uploaded_file($tempName, "$filePath");
                 print("<p>Uploaded the file to the server folder successfully</p>");
-                //print("<p>The file $title was uploaded successfully.</p>");
             } else {
                 print("<p>Error: The file $title was not uploaded.</p>");
             }
-            print('catching');
+            
+            //sql execution code for photo path upload to database
             $sqlAdd = "INSERT INTO photos(photoID, title, picPath, description, credit) VALUES (NULL, '$title', '$filePath', '$description', '$credit')";
 
             //execution of if statement will run query insertion
             if($mysqli ->query($sqlAdd)){
-                print('almost');
+                //select most recent inputed member
                 $query = $mysqli->query("SELECT * FROM photos ORDER BY photoID DESC LIMIT 1");
                 $idNumber = $query->fetch_assoc();
                 $x = $idNumber['photoID'];
+
                 //add the photo to albums
                 $sql = $mysqli->query("INSERT INTO picsIn(albumID, photoID) VALUES ('1', '$x')");
-                $insert = $mysqli->query("INSERT INTO members(memberID, first_name, last_name, sport, class, number_attend, photoID, admin) VALUES (NULL, '$firstName', '$lastName', '$sport', '$year', '0', '$x', '0')");
+                $memberAdd = "";
+                if($admin === 0){
+                    $memberAdd = "INSERT INTO members(memberID, first_name, last_name, sport, class, number_attend, photoID, admin) VALUES (NULL, '$firstName', '$lastName', '$sport', '$year', '0', '$x', '0')";
+                }else{
+                    $memberAdd = "INSERT INTO members(memberID, first_name, last_name, sport, class, number_attend, photoID, admin) VALUES (NULL, '$firstName', '$lastName', '$sport', '$year', '0', '$x', '1')";
+                }
+                $insert = $mysqli->query($memberAdd);
                 $update = $mysqli->query("UPDATE albums SET date_last_mod = timestamp WHERE albums.albumID = '1'");
                 $update = $mysqli->query(" UPDATE albums SET size = size+1 WHERE albums.albumID = '1'");
-                print('inserted the photo and member');
             }else{
-                $memberInsert = $mysqli->query("INSERT INTO members(memberID, first_name, last_name, sport, class, number_attend, photoID, admin) VALUES (NULL, '$firstName', '$lastName', '$sport', '$year', '0', NULL, '0')");
+                $memberAdd = "";
+                if($admin === 0){
+                    $memberAdd = "INSERT INTO members(memberID, first_name, last_name, sport, class, number_attend, photoID, admin) VALUES (NULL, '$firstName', '$lastName', '$sport', '$year', '0', NULL, '0')";
+                }else{
+                    $memberAdd = "INSERT INTO members(memberID, first_name, last_name, sport, class, number_attend, photoID, admin) VALUES (NULL, '$firstName', '$lastName', '$sport', '$year', '0', NULL, '1')";
+                }
+                $memberInsert = $mysqli->query($memberAdd);
                 print("<h3>ERROR: Did not upload photo into the database, but member has been added</h3>" . $mysqli->error);
             }
         }

@@ -317,20 +317,24 @@ table {
     color: white;
     background-color: #333333;
     font-family: 'Slabo 27px', serif;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 td {
-    width: 100px;
+    width: 200px;
     border-style: solid;
     border: 2px;
     border: 1px solid white;
     height: 50px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: auto;
+    padding-right: auto;
 }
 /*styling for the member display list*/
+#athleteform{
+    
+}
+
 .memberClassL{
     width: auto;
     border: 1px solid #333333;
