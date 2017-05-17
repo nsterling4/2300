@@ -28,36 +28,46 @@
         if (isset($_GET['side'])) {
             $searchSide = $_GET['side'];
          
-        if(($searchSide == "Reps") && (!empty($_POST['repterm']))) {
-            require_once 'includes/config.php';
-            $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME );
-            $keyword = $_POST['repterm'];
-            $keyword = $mysqli->real_escape_string($keyword);
-            $sport = $_POST['sport'];
-            $year = $_POST['Year'];
-            $query = "SELECT DISTINCT * FROM members WHERE first_name LIKE '%$keyword%' OR  last_name LIKE '%$keyword%' AND sport LIKE '%$sport%' AND class LIKE '%$year%'";
-            $result = $mysqli->query($query);
-            while ($row = $result->fetch_assoc()) {
-                print "<p>$row[first_name]</p>";
-            }
-        }
-        
-        if(($searchSide == "Posts") && (!empty($_POST['postterm']))) {
-            require_once 'includes/config.php';
-            $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME );
-            $keyword = $_POST['postterm'];
-            $keyword = $mysqli->real_escape_string($keyword);
-            $entry = $_POST['post'];
-            if ($entry == 'events'){
-                $query = "SELECT DISTINCT * FROM events WHERE name LIKE '%$keyword%' OR  description LIKE '%$keyword%'";
-            } else if ($entry == 'albums') {
-                $query = "SELECT DISTINCT * FROM albums WHERE a_title LIKE '%$keyword%' OR  description LIKE '%$keyword%'";
-            }  else {
-                $query = "SELECT DISTINCT * FROM photos WHERE credit LIKE '%$keyword%' OR title LIKE '%$keyword%' OR description LIKE '%$keyword%'";
-            }
+            if(($searchSide == "Reps") && (!empty($_POST['repterm']))) {
+                require_once 'includes/config.php';
+                $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME );
+                $keyword = $_POST['repterm'];
+                $keyword = $mysqli->real_escape_string($keyword);
+                $sport = $_POST['sport'];
+                $year = $_POST['Year'];
+                $query = "SELECT DISTINCT * FROM members WHERE first_name LIKE '%$keyword%' OR  last_name LIKE '%$keyword%' AND sport LIKE '%$sport%' AND class LIKE '%$year%'";
+                print "<table>";
                 $result = $mysqli->query($query);
                 while ($row = $result->fetch_assoc()) {
-                    print "<p>$row<p>";
+                    $name = $row['first_name']." ".$row['last_name'];
+                    $sport = $row['sport'];
+                    $class = $row['class'];
+                    print "  <tr>
+                    <td> $name </td>
+                    <td> $sport </td>
+                    <td> $class </td>
+                    </tr>";
+                } print "</table>";
+            }
+        
+        
+            if(($searchSide == "Posts") && (!empty($_POST['postterm']))) {
+                require_once 'includes/config.php';
+                $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME );
+                $keyword = $_POST['postterm'];
+                $keyword = $mysqli->real_escape_string($keyword);
+                $entry = $_POST['post'];
+                if ($entry == 'events'){
+                    $query = "SELECT DISTINCT * FROM events WHERE name LIKE '%$keyword%' OR  description LIKE '%$keyword%'";
+                } else if ($entry == 'albums') {
+                    $query = "SELECT DISTINCT * FROM albums WHERE a_title LIKE '%$keyword%' OR  description LIKE '%$keyword%'";
+                }  else {
+                    $query = "SELECT DISTINCT * FROM photos WHERE credit LIKE '%$keyword%' OR title LIKE '%$keyword%' OR description LIKE '%$keyword%'";
+                }
+                print "<table>";
+                $result = $mysqli->query($query);
+                while ($row = $result->fetch_assoc()) {
+                    print "well then";
                 }
             }
         }

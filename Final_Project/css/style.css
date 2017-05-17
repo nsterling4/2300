@@ -254,7 +254,7 @@ form {
 }
 
 
-#welcome_p, #fields{
+#welcome_p, #fields {
     text-align: center;
     padding-top: 10%;
     padding-bottom: 10%;
@@ -266,8 +266,8 @@ form {
     margin-bottom: 1%;
 }
 
-#fields{
-    float: left;
+#fields {
+    display: inline-block;
     margin-left: 3px;
     padding-top: 3px;
 }
