@@ -345,7 +345,7 @@ td {
     display: block;
     margin: auto;
     text-align: center;
-    padding-top: 350px;
+    padding-top: 20px;
 }
 .gallery {
     display: inline-block;
@@ -396,6 +396,17 @@ td {
 
 #newAlbumEntry {
     display: none;
+}
+
+.thumbnail {
+  display: inline-block;
+  max-height: 100%;
+  max-width: 100%;
+  align-content: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
 }
 
 
