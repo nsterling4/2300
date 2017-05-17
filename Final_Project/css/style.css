@@ -41,29 +41,18 @@ button {
 }
 
 
- h2 {
 
-    color: #B31B1B; /*Cornell Red*/
-    text-align: center;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    margin: auto;
-    width: 30%;
-    background-color: #F7F7F7;
-    border-radius: 50px;
-}
 
  h3 {
 
     color: #B31B1B; /*Cornell Red*/
     text-align: center;
-    padding-bottom: 10px;
-    padding-top: 10px;
     margin: auto;
     width: 30%;
     background-color: #F7F7F7;
     border-radius: 50px;
 }
+
 
 #dropdownsearch {
     display: none;
@@ -107,6 +96,11 @@ form {
 .page_body {
     /*padding-bottom:134px;  Height of the footer element */
     /*background-size: cover;*/
+}
+
+
+#mem_tab {
+    margin-top: 100px;
 }
 
 
@@ -224,7 +218,40 @@ form {
     height: 148px;
     margin-left: 2px;
     margin-top: -38px;
+    position: sticky;
 }
+
+.SAAC_Rep_img {
+    width: 100%;
+    height: 800px;
+    margin-top: -43px;
+}
+
+#title {
+    color: #B31B1B; /*Cornell Red*/
+    text-align: center;
+    margin: auto;
+    width: 35%;
+    background-color: #F7F7F7;
+    border-radius: 50px;
+    }
+
+#intro {
+    margin-top: 50px; 
+    text-align: left;
+    padding: 5%;
+    width: 80%;
+    background: #E0E0E0;
+    border-radius: 50px;
+    margin: auto;
+    opacity: .8;
+}
+
+#main_cont {
+   margin-top: -835px;
+   margin-bottom: 535px;
+}
+
 
 #welcome_p, #fields{
     text-align: center;
@@ -247,7 +274,7 @@ form {
 .forms {
     text-align: center;
     width: 42%;
-    background: #00E0E0;
+    background: #E0E0E0;
     border-radius: 50px;
     margin: auto;
     margin-top: 1%;
@@ -270,17 +297,7 @@ form {
     display: inline-block;
 }
 
-#intro{
-    text-align: left;
-    padding: 5%;
-    width: 80%;
-    background: #E0E0E0;
-    border-radius: 50px;
-    margin: auto;
-    margin-top: 15%;
-    margin-bottom: 15%;
-    opacity: .8;
-}
+
 
 .field {
     display: block;
@@ -432,6 +449,20 @@ td {
         width: 70%; 
     }
 
+    .slide_show {
+        display: none;
+    }
+
+    .SAAC_Rep_img {
+    margin-top: 105px;
+    }
+
+    #main_cont {
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+
    
 
 }
@@ -497,6 +528,14 @@ td {
         display: none;
     }
 
+    .SAAC_Rep_img {
+    margin-top: 60px;
+    }
+
+    #main_cont {
+        margin-top: -859px;
+    }
+
 }
 /* between 769 and 992 */ 
 @media (min-width: 769px) and (max-width: 992px) {
@@ -528,6 +567,13 @@ td {
         padding: 14px 14px;
     }
 
+    .SAAC_Rep_img {
+    margin-top: 65px;
+    }
+
+    #main_cont {
+        margin-top: -862px;
+    }
 }
 /* between 993 and 1200 */ 
 @media (min-width: 993px) and (max-width: 1200px) {
@@ -543,6 +589,9 @@ td {
     #mob {
         display: none;
     }
+
+
+
  
 }
 /* greater than 1201 */ 
