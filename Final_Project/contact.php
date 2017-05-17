@@ -59,12 +59,12 @@
 	                		<option value="alum">Alumni</option>
 	                		<option value="employee">Employee</option>
 	            		</select>
-	            		<span class="error"><?php echo $affiliationErr;?></span> <br><br>
+	            		<span class="error"><?php echo $affiliationErr?></span> <br><br>
 
 	            		Do you currently or previously have any direct involvement within Cornell Athletics? <span class="error">*</span><br><br>
 	 						<input type="radio" name="involved" value="yes">Yes
 	  						<input type="radio" name="involved" value="no">No 
-	  						<span class="error"><?php echo "<br>$involvedErr";?></span><br>
+	  						<span class="error"><?php echo "<br>$involvedErr"?></span><br>
 
 	  					Leave us a comment, question, concern or suggestion: <span class="error">*</span>
 	  					 <br><textarea name="comment" rows="5" cols="40"></textarea> 

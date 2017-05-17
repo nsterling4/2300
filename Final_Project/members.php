@@ -45,7 +45,7 @@
 
 
 			<?php
-				print("<div>");
+				print("<div id='mem_tab'>");
 
     			$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 			    $member = $mysqli->query("SELECT DISTINCT memberID, first_name, last_name, sport, class, photoID FROM members");

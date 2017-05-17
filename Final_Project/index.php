@@ -48,14 +48,31 @@
 
 		<div class="page_body"> <!--Info about the page-->
 
-			<h2>Student Athlete Advisory Committee</h2>
+			<div class="slide_show">
+			  <img class="SAAC_Rep_img" src="images/2017Reps.jpg" alt="SACC_Reps">
+			  <img class="SAAC_Rep_img" src="images/2016Reps.jpg" alt="SACC_Reps">
+			  <img class="SAAC_Rep_img" src="images/2015Reps.jpg" alt="SACC_Reps">
+			  <img class="SAAC_Rep_img" src="images/2014Reps.jpg" alt="SACC_Reps">
+			 <script src="js/main.js"></script>
+			</div>
 
-			<div class="container">
+
+
+			<div class="container" id= "main_cont">
+
+			<h2 id='title'>Student Athlete Advisory Committee</h2>
+
+			<br><br><br><br>
 
 			<p id="intro">Welcome to the Student Athlete Advisory Committee (SAAC) website. The Student-Athlete Advisory Committee serves as the communication line between student-athletes and the athlete administration. Its goal is to enhance the student-athlete experience. We are composed of representatives from all varsity sports, working with the athletic administration to enhance the Student Athlete experience. By NCAA rule, it is required that a SAAC is present on each Division I campus. </p>
 
-				
+
+
+
+
+
 		    </div> 
+
 		</div> 
     <h3>Links to Meeting Agendas</h3>
     <!-- upload pdf files for agendas -->
@@ -92,18 +109,19 @@
 
     <script>
        //Array of images which you want to show: Use path you want.
-      var images=new Array('images/2017Reps.jpg','images/2016Reps.jpg','images/2015Reps.jpg', 'images/2014Reps.jpg');
-      var nextimage=0;
-      doSlideshow();
+      // var images=new Array('images/2017Reps.jpg','images/2016Reps.jpg','images/2015Reps.jpg', 'images/2014Reps.jpg');
+      // var nextimage=0;
+      // doSlideshow();
 
-      function doSlideshow(){
-        if(nextimage>=images.length){nextimage=0;}
-          $('.page_body')
-            .css('background-image','url("'+images[nextimage++]+'")')
-            .fadeIn("slow",function(){
-              setTimeout(doSlideshow,4000);
-            });
-      }
+      // function doSlideshow(){
+      //   if(nextimage>=images.length){nextimage=0;}
+      //     $('.page_body')
+      //       .css('background-image','url("'+images[nextimage++]+'")')
+      //       .fadeIn("slow",function(){
+      //         setTimeout(doSlideshow,4000);
+      //       });
+      // }
+
     </script>
     <script type="text/javascript">
       $("#quicksearch").click(function(){
