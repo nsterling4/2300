@@ -68,7 +68,6 @@
 
                         $email_message="Name: $name \n Email: $email \n Affiliation: $affiliation \n Involved: $involved \n Comment: $info";
 
-                        echo "Your Message says: $email_message";
 
 
 
