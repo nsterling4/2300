@@ -32,7 +32,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><label>Is member an Admin?*:</label></td>
+                            <td><label>Is member an E-Board member?*:</label></td>
                             <td>                            
                                 <select name ="admin" required>
                                     <option name="0">No</option>
