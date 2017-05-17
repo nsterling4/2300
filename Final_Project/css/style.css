@@ -266,7 +266,7 @@ form {
 }
 
 
-#welcome_p, #fields{
+#welcome_p, #fields {
     text-align: center;
     padding-top: 10%;
     padding-bottom: 10%;
@@ -278,7 +278,11 @@ form {
     margin-bottom: 1%;
 }
 
+<<<<<<< HEAD
 #fields{
+=======
+#fields {
+>>>>>>> 864723b6edccff4bd93e89a6c1b8012dd39bf1bc
     display: inline-block;
     margin-left: 3px;
     padding-top: 3px;
