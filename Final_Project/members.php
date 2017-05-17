@@ -70,7 +70,7 @@
 		    				}
 		    			}
 	    			}
-                    include 'includes/addMemForm.php';
+                    include 'addMemForm.php';
 						
 				    while($name = $member->fetch_assoc()){
 				        //print("<div class='memberDisplay'>");
