@@ -68,7 +68,11 @@
 			</div>
 			<div class="container">
 			<?php
-				if (isset($_SESSION['valid_user'])) {
+				if (!isset($_SESSION['valid_user'])) {
+                    $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+                    $result = $mysqli->query("SELECT * FROM albums");
+                    //fetching the data
+                   
                     echo '
                     <form method="post" enctype="multipart/form-data">
                     <label>Photo Title:</label> 
@@ -82,11 +86,21 @@
                     <br>
                     <label>File Upload:</label>
                     <input name="newphoto" type="file" required>
-                    <br> <input value="Submit Photo!" type="submit" name="submitpic">
+                    <select id="album-select" name ="album" required>
+                    <option></option>
+                    <option value="newAlb">Create New Album</option>';
+                     while ($row = $result->fetch_assoc()) {
+                        $albumname = $row['a_title'];
+                        $albumID = $row['albumID'];
+                        print ("<option value=$albumID>$albumname</option>");
+                     }
+                    print '<input type="text" name="newAlbum" id="newAlbumEntry"> 
+                        <br> <input value="Submit Photo!" type="submit" name="submitpic">
                     </form>';
+                    
 				}
 				else {
-					echo '<p id="welcome_p">This page is still in construction. For more features please <a href="login.php">Login</a></p>';
+					echo '<p id="welcome_p">Only certain members can add albums or photos. For more features please <a href="login.php">Login</a></p>';
 				}
 			?> 
 		    </div>  <!-- End of gallery_container div -->  	   
@@ -94,7 +108,17 @@
             -->
             
 		</div> <!-- End of page_body div -->
-
+        <script>
+            $("#album-select").change(function() {
+            // START CODE Q1
+                var $album_selection = $("#album-select").val();
+                if($album_selection == "newAlb"){
+                    $("#newAlbumEntry").show();
+                } else {     
+                    $("#newAlbumEntry").hide();
+                };
+            });
+            </script>
 
 		<footer>
 			<?php
