@@ -51,39 +51,47 @@
 						print("<div class='forms'>Entries Have Been Unselected</div>");
 					}
 					$attend = $mysqli->query("SELECT entry, memberID, meetDate FROM meeting_attend ORDER BY memberID ASC AND ORDER BY meetDate DESC");
-					$member = $mysqli->query("SELECT DISTINCT * FROM members INNER JOIN meeting_attend ON members.memberID = meeting_attend.memberID ORDER BY members.last_name ASC");
-				    while($info = $member->fetch_assoc()){
-				    	$f_name = $info['first_name'];
-	            		$l_name = $info['last_name'];
-	            		$year = $info['class'];
-	            		$memberID = $info["memberID"];
-	            		$entry = $info['entry'];
-	            		$attend = $mysqli->query("SELECT meetDate FROM meeting_attend WHERE memberID = '$memberID' ORDER BY meetDate DESC");
-	            		//go through all entries of $attend and display in order
-	            		foreach ($attend as $displayA) {
-	            			$dateA = $displayA['meetDate'];
-	            			print("
-									<form method='post' class='memberClassL' enctype='multipart/form-data'>
-										<table> 
-											<tr>
-							                    <td> $f_name </td>
-							                    <td> $l_name </td>
-							                    <td> $year </td>
-							                    <td> \"Date Attended \" + $dateA </td>
-							                    <td> <input type='checkbox' name='deleteAttend[]' value=$entry> Delete This Record of Attendance</td>
-							                </tr>
-							            </table>
-						            </form>
-						        ");
-							print("<input type='submit' name='submit' value='Submit'></form>");
-						}
+					$member = $mysqli->query("SELECT DISTINCT COUNT(*) FROM members INNER JOIN meeting_attend ON members.memberID = meeting_attend.memberID ORDER BY members.last_name ASC");
 
-						if(!empty($_POST["deleteAttend"])){
-		    				//double check that they actually want to remove the selected members
-							print("<form method='post'>Are you sure you want to delete selected Attendance Records? <br>
-								<input type='submit' name='Remove' value='Remove'><input type='submit' name='CANCEL' value='CANCEL'></form>");
-							$_SESSION['attendanceRemove'] = $_POST['deleteAttendance'];
-		    			}
+					if(!empty($_POST["deleteAttend"])&& isset($_POST['submitAttendance'])){
+	    				//double check that they actually want to remove the selected members
+						print("<form method='post'>Are you sure you want to delete selected Attendance Records? <br>
+							<input type='submit' name='Remove' value='Remove'><input type='submit' name='CANCEL' value='CANCEL'></form>");
+						$_SESSION['attendanceRemove'] = $_POST['deleteAttend'];
+		    		}
+
+		    		$att = $member->fetch_row();
+		    		if($att[0] >0){
+		    			$member = $mysqli->query("SELECT DISTINCT * FROM members INNER JOIN meeting_attend ON members.memberID = meeting_attend.memberID ORDER BY members.last_name ASC");
+
+					    while($info = $member->fetch_assoc()){
+					    	$f_name = $info['first_name'];
+		            		$l_name = $info['last_name'];
+		            		$year = $info['class'];
+		            		$memberID = $info["memberID"];
+		            		$entry = $info['entry'];
+		            		$attend = $mysqli->query("SELECT meetDate FROM meeting_attend WHERE memberID = '$memberID' ORDER BY meetDate DESC");
+		            		//go through all entries of $attend and display in order
+		            		foreach ($attend as $displayA) {
+		            			$dateA = $displayA['meetDate'];
+		            			print("
+										<form method='post' class='memberClassL' enctype='multipart/form-data'>
+											<table> 
+												<tr>
+								                    <td> $f_name </td>
+								                    <td> $l_name </td>
+								                    <td> $year </td>
+								                    <td> Date Attended $dateA </td>
+								                    <td> <input type='checkbox' name='deleteAttend[]' value=$entry> Delete This Record of Attendance</td>
+								                </tr>
+								            </table>
+							        ");
+							}
+			    		}
+			    		print("<input type='submit' name='submitAttendance' value='Submit'></form>");
+			    	}else{
+			    		print("<div class = 'forms'><h2>There are no records of attendance for any members to be displayed</h2></div>");
+			    	}
 
 					$mysqli->close();
 				?>

@@ -68,13 +68,12 @@
 
 			   	//if admin logged in
 				if (isset($_SESSION['admin_user'])) {
-
-					//click to see attendance record
-					if(isset($_POST['displayAttendance'])){
-						//redirect to attendance page
-						print('<li><a href="attendance.php">Attendance Records</a></li>');
-					}
-					print("<div class='admin_login'><form method='post'><input type='submit' name='displayAttendance' value='See Attendance'</form></div>");
+					//display attendance
+					echo '<div class="admin_login">
+							<ul>
+			            		<li><a href="attendance.php">Attendance Record</a></li>
+							</ul>
+						  </div>';
 
 					//if any members were selected for deleting or attendance
                     if(isset($_POST["option"]) || isset($_POST["remove"]) && isset($_POST["submit"])){
