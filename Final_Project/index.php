@@ -14,98 +14,95 @@
 
 		<div class ="top_bar"> <!-- Contains header and Nav Bar -->
 			<div class ="banner">
-                <span id="button"><button id="quicksearch">Search Site</button>
-                </span>
-				<h1> 
-					Welcome to SAAC 	
-<!-- 					<img class="logo" src="images/cornell_white.jpeg" alt="Cornell Logo" title="Cornell University">  -->
-                </h1>
-                
-                <div id="dropdownsearch">
-                    <form action="search.php" method="post"> 
-                        <br> Search 
-                        <select name ="searchbar" required>
-                            <option value="all">Entire Site</option>
-                            <option value="reps">SAAC Members</option>
-                            <option value="articles">Articles</option>
-                            <option value="events">Events</option>
-                            <option value="albums">Albums</option>                        
-                        </select>
-                        for :
-                        <input type="text" name="searchterm" required>
-                        <input type="submit" value="search" name="search"> <br>
-                        Need More Fields? -<a href="advSearch.php">Advanced Search</a>
-                    </form>
-                </div>
+        <span id="button"><button id="quicksearch">Search Site</button></span>
+				<h1>Welcome to SAAC</h1>
+<!-- <img class="logo" src="images/cornell_white.jpeg" alt="Cornell Logo" title="Cornell University">  -->
+        <div id="dropdownsearch">
+          <form action="search.php" method="post"> 
+            <br> Search 
+            <select name ="searchbar" required>
+              <option value="all">Entire Site</option>
+              <option value="reps">SAAC Members</option>
+              <option value="articles">Articles</option>
+              <option value="events">Events</option>
+              <option value="albums">Albums</option>                        
+            </select>
+              for :
+              <input type="text" name="searchterm" required>
+              <input type="submit" value="search" name="search"> <br>
+              Need More Fields? -<a href="advSearch.php">Advanced Search</a>
+          </form>
+        </div>
 			</div> <!--End of banner div-->
 			
 
 			<?php
-    	  		include 'includes/navbar.php';
-    		?> 
-    	</div> <!-- End of top_bar div -->
-
+    	  include 'includes/navbar.php';
+    	?> 
+    </div> <!-- End of top_bar div -->
 
 		<div class="page_body"> <!--Info about the page-->
+		  <div class="slide_show">
+  			<img class="SAAC_Rep_img" src="images/2017Reps.jpg" alt="SACC_Reps">
+  			<img class="SAAC_Rep_img" src="images/2016Reps.jpg" alt="SACC_Reps">
+  			<img class="SAAC_Rep_img" src="images/2015Reps.jpg" alt="SACC_Reps">
+  			<img class="SAAC_Rep_img" src="images/2014Reps.jpg" alt="SACC_Reps">
+        <script src="js/main.js"></script>
+		  </div>
 
-			<div class="slide_show">
-			  <img class="SAAC_Rep_img" src="images/2017Reps.jpg" alt="SACC_Reps">
-			  <img class="SAAC_Rep_img" src="images/2016Reps.jpg" alt="SACC_Reps">
-			  <img class="SAAC_Rep_img" src="images/2015Reps.jpg" alt="SACC_Reps">
-			  <img class="SAAC_Rep_img" src="images/2014Reps.jpg" alt="SACC_Reps">
-			 <script src="js/main.js"></script>
-			</div>
+      <div class="container" id= "main_cont">
+        <br>
+        <h2 id='title'>Student Athlete Advisory Committee</h2>
+        <br><br><br><br>
 
-
-
-			<div class="container" id= "main_cont">
-
-			<h2 id='title'>Student Athlete Advisory Committee</h2>
-
-			<br><br><br><br>
-
-			<p id="intro">Welcome to the Student Athlete Advisory Committee (SAAC) website. The Student-Athlete Advisory Committee serves as the communication line between student-athletes and the athlete administration. Its goal is to enhance the student-athlete experience. We are composed of representatives from all varsity sports, working with the athletic administration to enhance the Student Athlete experience. By NCAA rule, it is required that a SAAC is present on each Division I campus. </p>
-
-
-
-
-
-
-		    </div> 
-
+        <p id="intro">Welcome to the Student Athlete Advisory Committee (SAAC) website. The Student-Athlete Advisory Committee serves as the communication line between student-athletes and the athlete administration. Its goal is to enhance the student-athlete experience. We are composed of representatives from all varsity sports, working with the athletic administration to enhance the Student Athlete experience. By NCAA rule, it is required that a SAAC is present on each Division I campus. </p>
+      </div> 
 		</div> 
+
     <h3>Links to Meeting Agendas</h3>
     <!-- upload pdf files for agendas -->
     <form method='post' enctype='multipart/form-data'>
-      <input type='file' id='meetingAgenda' name='PDF of Agenda'></p>
-      <input type='text' id='meetingDate' name='meetingDate' placeholder="00/00/000"> Date of the Meeting</p>
+      <input type='file' id='meetingAgenda' name='agendaPDF'></p>
+      <input type='text' id='meetingDate' name='meetingDate' placeholder="0000/00/00"> Date of the Meeting (yyyy/mm/dd)</p>
       <input type='submit' value='Upload Agenda' name='submit'></p>
     </form>
 
-    <?php
-      $newPDF = $_FILES['meetingAgenda'];
-        if($newPDF['error'] == 0){
-          $tempName = $newPDF['tmp_name'];
-          $title = $meetingDate;
-          $filepath = "agendas/$title";
-          move_uploaded_file($tempName, "$filepath");
-          print("<p>Uploaded the file to the server folder successfully</p>");
-        }else{
-          print("Problem uploading file");
-        }
-    ?>
-
+    <!-- upload the file -->
+    <!-- -->
     <?php
       $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-      $pdfs = $mysqli->query("SELECT * FROM meetings");
-      while($display = $pdfs->fetch_assoc()){
-        $filePath = $display['agendaPath'];
-        $dateMeeting = $display['date'];
-        $link = "<a href=\"$filePath.pdf\" target=\"_blank\"> $dateMeeting Meeting Agenda </a>";
-        print("$link");
+      if(isset($_POST['meetingDate']) && isset($_POST['submit'])){
+        $date = preg_replace("([^0-9/])", "", $_POST['meetingDate']);
+        $date = date("Y-m-d", strtotime($date));
+        if(!file_exists($_FILES['agendaPDF']['tmp_name']) || !is_uploaded_file($_FILES['agendaPDF']['tmp_name'])) {
+          print("<p>No File Detected</p>");
+        }else{
+          $filePath = "";
+          $newAgenda = $_FILES['agendaPDF'];
+          if($newAgenda['error'] == 0){
+            $tempName = $newAgenda['tmp_name'];
+            $filePath = "agendas/$date.pdf";
+            move_uploaded_file($tempName, "$filePath");
+            $insert = $mysqli->query("INSERT INTO meetings(meetDate, agendaPath) VALUES ('$date', '$filePath')"); 
+            print("<p>Uploaded the file to the server folder successfully</p>");
+          }else{
+            print("<p>Error: The file was not uploaded.</p>");
+          }
+        }
       }
-    ?>
-        
+      $pdfs = $mysqli->query("SELECT * FROM meetings ORDER BY meetDate DESC");
+      $checker = false;
+      while($display = $pdfs->fetch_assoc()){
+        $checker = true;
+        $filePath = $display['agendaPath'];
+        $dateMeeting = $display['meetDate'];
+        $link = "<a href=\"$filePath\" target=\"_blank\"> $dateMeeting Meeting Agenda </a>";
+        print("<div class='forms'>$link</div>");
+      }
+      if ($checker === false) {
+        print("<div class='forms'>Sorry, No Agendas To Show</div>");
+      }
+    ?>        
 
     <script>
        //Array of images which you want to show: Use path you want.

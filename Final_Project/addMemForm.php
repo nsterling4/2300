@@ -35,7 +35,7 @@
                             <td><label>Image:</label></td>
                             <td>
                                 <p><input type="file" id="new-image" name="newphoto"></p>
-                                <p><input type="text" id="title" name="title" value="title" placeholder="Title"></p>
+                                <p><input type="text" id="titleinput" name="title" value="title" placeholder="Title"></p>
                                 <p><input type="text" name="description" value="description" placeholder="Write Description Here">
                                 <input type="text" name="credit" value="credit" placeholder="Photo Credit"></p>                            
                             </td>
@@ -63,20 +63,20 @@
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
             $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
             $credit = filter_input(INPUT_POST, 'credit', FILTER_SANITIZE_STRING);
-            $filepath = "";
+            $filePath = "";
             print('failed here 1');
             $newPhoto = $_FILES['newphoto'];
             if($newPhoto['error'] == 0){
                 $tempName = $newPhoto['tmp_name'];
-                $filepath = "images/$title";
-                move_uploaded_file($tempName, "$filepath");
+                $filePath = "images/$title";
+                move_uploaded_file($tempName, "$filePath");
                 print("<p>Uploaded the file to the server folder successfully</p>");
                 //print("<p>The file $title was uploaded successfully.</p>");
             } else {
                 print("<p>Error: The file $title was not uploaded.</p>");
             }
             print('catching');
-            $sqlAdd = "INSERT INTO photos(photoID, title, picPath, description, credit) VALUES (NULL, '$title', '$filepath', '$description', '$credit')";
+            $sqlAdd = "INSERT INTO photos(photoID, title, picPath, description, credit) VALUES (NULL, '$title', '$filePath', '$description', '$credit')";
 
             //execution of if statement will run query insertion
             if($mysqli ->query($sqlAdd)){
