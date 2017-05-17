@@ -86,13 +86,9 @@
                     }
 				?>
 			</div>
-			<div id="imageDisplay">
-			<!-- if a photo was selected -->
-				<?php
-					//include 'includes/photoSelect.php';
-				?>
-			</div>
 			<div class="container">
+
+            <!-- displaying the form for adding the picture -->
 			<?php
 				if (isset($_SESSION['valid_user'])) {
                     $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -126,7 +122,7 @@
                     
 				}
 				else {
-					echo '<p id="welcome_p">Only certain members can add albums or photos. For more features please <a href="login.php">Login</a></p>';
+					echo '<p id="welcome_p">Please Log In With Facebook If You Wish To Help Add Pictures!</p>';
 				}
 			?> 
 		    </div>  <!-- End of gallery_container div -->  	   

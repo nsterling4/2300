@@ -77,34 +77,12 @@
 				</form> ';
 					}
 					else {
-						echo '<p id="welcome_p">Log In to submit feedback </p>';
+						echo '<p id="welcome_p">Log In To Facebook To Submit Feedback </p>';
 					}
 				?> 
-				
-				
-
-
-
-
-
-
 		    </div>  <!-- End of container div -->  	 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 		</div> <!-- End of page_body div -->
-
 
 		<footer>
 			<?php
@@ -112,10 +90,6 @@
     		?> 
 		</footer> <!-- end of footer div -->  
 	</div> <!-- end of contents div -->
-
-
-
-
 
 </body>	
 

@@ -36,7 +36,7 @@ window.onload = function date() {
     var new_text = document.createTextNode(m + " " + da + ", " + y);
     //Creates the static text element
     var foot1 = document.createTextNode("CS2300 Final Project, ©2017");
-    var foot2 = document.createTextNode("Last Updated: March 28th, 2017");
+    var foot2 = document.createTextNode("Last Updated: May 17th, 2017");
     var foot3 = document.createTextNode("Created by SNOW Sports");
     //Isolates the footer element
     var location = document.getElementsByTagName('footer')[0];

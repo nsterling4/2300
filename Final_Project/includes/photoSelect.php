@@ -7,7 +7,7 @@
     if($link_ID){
         $idOfAlbum = $link_ID;
         $selectedAlbum = $mysqli->query("SELECT * FROM picsIn
-            INNER JOIN photos ON picsIn.imageID = photos.photoID 
+            INNER JOIN photos ON picsIn.photoID = photos.photoID 
             WHERE picsIn.albumID = $idOfAlbum");
 
         //go through each line of the query to print out photo information
@@ -57,7 +57,7 @@
                         <label> $desc <br>
                         $credit <br>
                         Photo in albums: $albums<br>
-                        <a href='photos.php?thirdID=$photoID'>Edit</a></label></div>");
+                        <a href='gallery.php?thirdID=$photoID'>Edit</a></label></div>");
         }else{
             //when you aren't logged in, you can still view the photo info
             print("<div class='displayingImages'>

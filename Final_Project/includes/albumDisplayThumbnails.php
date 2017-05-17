@@ -34,7 +34,7 @@
                             $alternative = $row['title']; 
 
                             //display the picture and the name of album
-                            print("<div class='gallery'><a href='photos.php?id=$name[0]'><img src='$picFile' alt='$alternative'><h3>Pictures from $name[1]</h3></a></div>");
+                            print("<div class='gallery'><a href='gallery.php?id=$name[0]'><img src='$picFile' alt='$alternative'><h3 id='albumH3'>Pictures from $name[1]</h3></a></div>");
                             
                             //end foreach for $pics
                             break;
@@ -46,7 +46,7 @@
             
         }else{
             //just print the title of the album
-            print("<div class='gallery'><a href='photos.php?id=$name[0]'><h3>No Pictures In This Album: $name[1]</h3></a></div>");
+            print("<div class='gallery'><a href='gallery.php?id=$name[0]'><h3>No Pictures In This Album: $name[1]</h3></a></div>");
         }
         print("</div>");
     }
