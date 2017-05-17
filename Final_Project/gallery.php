@@ -51,6 +51,20 @@
 		    </div>  <!-- End of gallery_container div -->  	   
 			<!-- 
             -->
+            <form method="post" enctype="multipart/form-data">
+                <label>Photo Name:</label> 
+                <input type="text" name="pName" required>
+                <br>
+                <label>Caption:</label>
+                <input type="text" name="caption"> 
+                <br>
+                <label>Credit:</label>
+                <input type="text" name="credit">
+                <br>
+                <label>File Upload:</label>
+                <input name="newphoto" type="file">
+            </form>
+		</div>
 		</div> <!-- End of page_body div -->
 
 
