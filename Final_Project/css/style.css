@@ -61,13 +61,13 @@ button {
 footer {
     color: #F7F7F7; /*Light Grey*/
     background: #B31B1B; /*Cornell Red*/
-    margin-bottom: 0;
+    margin-bottom: auto;
     width: 100%;
     padding: 3px;
     font-family: 'Cormorant SC', serif;
     height:134px;
     position:absolute;
-    bottom:-140px;
+    bottom:auto;
     left:0;
 }
 
