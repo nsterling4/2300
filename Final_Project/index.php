@@ -59,51 +59,6 @@
       </div> 
 		</div> 
 
-    <h3>Links to Meeting Agendas</h3>
-    <!-- upload pdf files for agendas -->
-    <form method='post' enctype='multipart/form-data'>
-      <input type='file' id='meetingAgenda' name='agendaPDF'></p>
-      <input type='text' id='meetingDate' name='meetingDate' placeholder="0000/00/00"> Date of the Meeting (yyyy/mm/dd)</p>
-      <input type='submit' value='Upload Agenda' name='submit'></p>
-    </form>
-
-    <!-- upload the file -->
-    <!-- -->
-    <?php
-      $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-      if(isset($_POST['meetingDate']) && isset($_POST['submit'])){
-        $date = preg_replace("([^0-9/])", "", $_POST['meetingDate']);
-        $date = date("Y-m-d", strtotime($date));
-        if(!file_exists($_FILES['agendaPDF']['tmp_name']) || !is_uploaded_file($_FILES['agendaPDF']['tmp_name'])) {
-          print("<p>No File Detected</p>");
-        }else{
-          $filePath = "";
-          $newAgenda = $_FILES['agendaPDF'];
-          if($newAgenda['error'] == 0){
-            $tempName = $newAgenda['tmp_name'];
-            $filePath = "agendas/$date.pdf";
-            move_uploaded_file($tempName, "$filePath");
-            $insert = $mysqli->query("INSERT INTO meetings(meetDate, agendaPath) VALUES ('$date', '$filePath')"); 
-            print("<p>Uploaded the file to the server folder successfully</p>");
-          }else{
-            print("<p>Error: The file was not uploaded.</p>");
-          }
-        }
-      }
-      $pdfs = $mysqli->query("SELECT * FROM meetings ORDER BY meetDate DESC");
-      $checker = false;
-      while($display = $pdfs->fetch_assoc()){
-        $checker = true;
-        $filePath = $display['agendaPath'];
-        $dateMeeting = $display['meetDate'];
-        $link = "<a href=\"$filePath\" target=\"_blank\"> $dateMeeting Meeting Agenda </a>";
-        print("<div class='forms'>$link</div>");
-      }
-      if ($checker === false) {
-        print("<div class='forms'>Sorry, No Agendas To Show</div>");
-      }
-    ?>        
-
     <script>
        //Array of images which you want to show: Use path you want.
       // var images=new Array('images/2017Reps.jpg','images/2016Reps.jpg','images/2015Reps.jpg', 'images/2014Reps.jpg');
