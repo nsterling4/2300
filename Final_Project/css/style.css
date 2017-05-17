@@ -394,7 +394,9 @@ td {
     text-align: center;
 }
 
-
+#newAlbumEntry {
+    display: none;
+}
 
 
 

@@ -40,15 +40,19 @@
                     $caption = $_POST["caption"];        
                     $credit = $_POST["credit"];
                     $path = "images/$originalName";
+                    $album = $_POST['album'];
                     if ($mysqli->query("INSERT INTO photos (title, picPath, description, credit) VALUES ('$title', '$path', '$caption', '$credit')")){
                         print "<br> successful sql query";
                     };
-                    /**if(!empty($_POST["Albums"])) {
-                        foreach($_POST["Albums"] as $check) {
-                            $mysqli->query("INSERT INTO AthletesinAlbums (album, athleteID) VALUES ('$check', (SELECT athleteID FROM Athletes WHERE Name = '$name'))");
-                        }
-                    }**/
-                };
+                    if(!empty($_POST["newAlbum"]) && ($album == "newAlb")) {
+                        $album = $_POST["newAlbum"];
+                        $mysqli->query("INSERT INTO albums (a_title, size) VALUES ('$album', 1)");
+                        $mysqli->query("INSERT INTO picsIn (albumID, photoID) VALUES ((SELECT albumID FROM albums WHERE a_title = '$album'), (SELECT photoID FROM photos WHERE title = '$title'))");
+                    } else {
+                        $mysqli->query("UPDATE albums SET size = size + 1 WHERE albumID = '$album'");
+                        $mysqli->query("INSERT INTO picsIn (albumID, photoID) VALUES ('$album', (SELECT photoID FROM photos WHERE title = '$title'))");
+                    };
+                }
             }
     		?> 
     	</div> <!-- End of top_bar div -->
@@ -68,7 +72,7 @@
 			</div>
 			<div class="container">
 			<?php
-				if (!isset($_SESSION['valid_user'])) {
+				if (isset($_SESSION['valid_user'])) {
                     $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
                     $result = $mysqli->query("SELECT * FROM albums");
                     //fetching the data
@@ -85,17 +89,17 @@
                     <input type="text" name="credit" required>
                     <br>
                     <label>File Upload:</label>
-                    <input name="newphoto" type="file" required>
+                    <input name="newphoto" type="file" required> <br>
                     <select id="album-select" name ="album" required>
                     <option></option>
-                    <option value="newAlb">Create New Album</option>';
+                    <option value="newAlb">Enter New Album:</option>';
                      while ($row = $result->fetch_assoc()) {
                         $albumname = $row['a_title'];
                         $albumID = $row['albumID'];
                         print ("<option value=$albumID>$albumname</option>");
                      }
                     print '<input type="text" name="newAlbum" id="newAlbumEntry"> 
-                        <br> <input value="Submit Photo!" type="submit" name="submitpic">
+                        <br> <input value="Submit!" type="submit" name="submitpic">
                     </form>';
                     
 				}
