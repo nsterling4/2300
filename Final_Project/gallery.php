@@ -23,7 +23,7 @@
 
             <?php
             include 'includes/navbar.php';
-            if (isset($_POST["addathlete"]) && !empty( $_FILES[ 'newphoto' ] ) ) {
+            if (isset($_POST["submitpic"]) && !empty( $_FILES[ 'newphoto' ] ) ) {
                 $newPhoto = $_FILES[ 'newphoto' ];
                 $originalName = $newPhoto['name'];
                 if ( $newPhoto['error'] == 0 ) {
@@ -39,15 +39,16 @@
                     $title = $_POST["title"];
                     $caption = $_POST["caption"];        
                     $credit = $_POST["credit"];
-                    $desc = $_POST["description"];
                     $path = "images/$originalName";
-                    $mysqli->query("INSERT INTO photos (title, picPath, description, credit) VALUES ('$title', '$path', '$desc', '$credit')");
+                    if ($mysqli->query("INSERT INTO photos (title, picPath, description, credit) VALUES ('$title', '$path', '$caption', '$credit')")){
+                        print "<br> successful sql query";
+                    };
                     /**if(!empty($_POST["Albums"])) {
                         foreach($_POST["Albums"] as $check) {
                             $mysqli->query("INSERT INTO AthletesinAlbums (album, athleteID) VALUES ('$check', (SELECT athleteID FROM Athletes WHERE Name = '$name'))");
                         }
                     }**/
-                }
+                };
             }
     		?> 
     	</div> <!-- End of top_bar div -->
