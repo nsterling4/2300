@@ -90,7 +90,7 @@
 			    		}
 			    		print("<input type='submit' name='submitAttendance' value='Submit'></form>");
 			    	}else{
-			    		print("<div class = 'forms'><h2>There are no records of attendance for any members to be displayed</h2></div>");
+			    		print("<div class = 'forms'><h2>There are no records of attendance for any current members to be displayed</h2></div>");
 			    	}
 
 					$mysqli->close();
