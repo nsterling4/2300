@@ -105,7 +105,7 @@ form {
 }
 
 
-
+/*navigation bar styling*/
 .nav_bar{
     background: #222222; /*Black*/ 
     width: 100%;
@@ -147,6 +147,7 @@ form {
     background-color: #B31B1B; /*Cornell Red*/
 }
 
+/*admin login styling*/
 .admin_login{
     background: #222222; 
     width: 13%;
@@ -207,7 +208,6 @@ form {
 
 }
 
-    
 .logo {
     float: right;
     /*height: 70px;*/
@@ -310,13 +310,15 @@ form {
     color: red;
 }
 
+/*styling for member page tables*/
 table {
-    width: 80%;
+    width: 100%;
     border: 1px solid #333333;
     color: white;
     background-color: #333333;
     font-family: 'Slabo 27px', serif;
-    margin-left: 142px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 td {
@@ -326,8 +328,16 @@ td {
     border: 1px solid white;
     height: 50px;
     padding-left: 15px;
+    padding-right: 15px;
 }
-
+/*styling for the member display list*/
+.memberClassL{
+    width: auto;
+    border: 1px solid #333333;
+    color: white;
+    background-color: #333333;
+    font-family: 'Slabo 27px', serif;
+}
 
 
 /*all .gallery stuff pertains to album thumbnails*/

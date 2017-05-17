@@ -52,20 +52,26 @@
 
 			   	//if admin logged in
 				if (isset($_SESSION['admin_user'])) {
-				//put member adding form here
-                    if((!empty($_POST["option"]) || !empty($_POST["remove"])) && !empty($_POST["submit"])){
+                    if(isset($_POST["option"]) || isset($_POST["remove"]) && isset($_POST["submit"])){
 		    			if(!empty($_POST["option"])){
 		    				$selected = $_POST["option"];
-		    				foreach ($selected as $attended) {
-		    					$meetingAttend = $mysqli->query("INSERT INTO meeting_attend(date, memberID) VALUES (CURRENT_DATE, '$attended'");
-		    				}
+		    				$meetValid = $mysqli->query("SELECT * FROM meetings WHERE meetDate = CURRENT_DATE");
+		    				if(!empty($meetValid)){
+			    				foreach ($selected as $attended) {
+			    					$meetingAttend = $mysqli->query("INSERT INTO meeting_attend(meetDate, memberID) VALUES (CURRENT_DATE, '$attended'");
+			    					$increase = $mysqli->query("UPDATE members SET number_attend = number_attend +1 WHERE members.memberID = $attended");
+			    				}
+			    				print("<div class='forms'>Attendance has been taken</div>");
+			    			}else{
+			    				print("<div class='forms'>Please Create A Meeting For Today Before Taking Attendance</div>");
+			    			}
 		    			}if(!empty($_POST["remove"])){
 		    				$removeList = $_POST["remove"];
 		    				print("<div class='forms'>Are you sure you want to delete these members? <br>
-		    					<input type='submit' name='imsure value='Yes'>I'm Sure");
+		    					<input type='submit' name='imsure' value='I Am Sure'>");
 		    				if(isset($_POST["imsure"])){
 		    					foreach ($removeList as $r) {
-		    						$delete = $mysqli->query("DELETE FROM members WHERE memberID=$r");
+		    						$delete = $mysqli->query("DELETE FROM members WHERE members.memberID = '$r'");
 		    					}
 		    				}
 		    			}
@@ -86,7 +92,7 @@
 
 	            		// Membership info displayed in a table
 				        print( 
-				            "<table> 
+				            "<form method='post' class='memberClassL' enctype='multipart/form-data'><table> 
 				                <tr>
 				                    <td> $f_name </td>
 				                    <td> $l_name </td> 
@@ -97,7 +103,7 @@
 				                </tr>
 				            </table>");
 			    	}
-			    	print("<input type='submit' name='submit' value='Submit'>");
+			    	print("<input type='submit' name='submit' value='Submit'></form>");
 			    	print("</div>");
 		    			//update attendance and/or remove members
 	    			
