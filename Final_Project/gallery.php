@@ -61,7 +61,29 @@
 			<div id="gallery_thumbnails">
 			<!-- display a thumbnail for each album -->
 				<?php
-					//include 'includes/albumDisplayThumbnails.php';
+                    $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+
+                    if(isset($_GET['photoID'])) {
+
+                        $photoID = filter_input(INPUT_GET,'photoID', FILTER_VALIDATE_INT);
+                        $sql = "SELECT * FROM photos WHERE photoID = $photoID";
+                        $result = $mysqli->query($sql);
+                            while($row = $result->fetch_assoc()){
+                                echo "<img class = fullsize src=",$row["picPath"],">";
+                                echo "<p> Caption: ",$row["description"],"</p>";
+                                echo "<p> Credit: ", $row["credit"],"</p>";
+                                }
+                        } 
+                    else{
+                    $sql = 'SELECT * FROM photos';
+                    $result = $mysqli->query($sql);
+                        while($row = $result->fetch_assoc()){
+                            $photoID = $row["photoID"];
+                            echo "<a href =gallery.php?photoID=$photoID>","<img class=thumbnail src=";
+                            echo $row["picPath"];
+                            echo ">","</a>";
+                        }
+                    }
 				?>
 			</div>
 			<div id="imageDisplay">

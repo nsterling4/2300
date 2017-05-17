@@ -7,7 +7,7 @@ require_once 'includes/config.php';
          <img class="bear_logo" src="images/CornellBigRed.png" alt="Cornell Logo" title="Cornell University"> 
             <ul id="main">
                 <li><a href="index.php">Home</a></li>
-                <li><a href="articles.php">Articles</a></li>
+                <li><a href="articles.php">Agendas</a></li>
                 <li><a href="gallery.php">Gallery</a></li>
                 <li><a href="events.php">Events</a></li>
                 <li><a href="members.php">Members</a></li>

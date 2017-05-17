@@ -249,7 +249,7 @@ form {
 }
 
 #main_cont {
-   margin-top: -835px;
+   margin-top: -859px;
    margin-bottom: 535px;
 }
 
@@ -349,7 +349,7 @@ td {
     display: block;
     margin: auto;
     text-align: center;
-    padding-top: 350px;
+    padding-top: 20px;
 }
 .gallery {
     display: inline-block;
@@ -400,6 +400,17 @@ td {
 
 #newAlbumEntry {
     display: none;
+}
+
+.thumbnail {
+  display: inline-block;
+  max-height: 100%;
+  max-width: 100%;
+  align-content: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
 }
 
 
@@ -550,7 +561,7 @@ td {
     }
 
     #main_cont {
-        margin-top: -859px;
+        margin-top: -880px;
     }
 
 }
@@ -589,7 +600,7 @@ td {
     }
 
     #main_cont {
-        margin-top: -862px;
+        margin-top: -884px;
     }
 }
 /* between 993 and 1200 */ 

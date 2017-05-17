@@ -2,14 +2,13 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Articles</title>
+		<title>Agendas</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link href="https://fonts.googleapis.com/css?family=Cormorant+SC|Linden+Hill|PT+Serif:700i" rel="stylesheet">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="includes/scripts.js"></script>
 		<script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
-  		<script src="includes/texteditor.js"></script>
 	</head>
 
 <body>
@@ -18,7 +17,7 @@
 			<div class ="banner">
                 <?php include 'includes/banner.php'; ?>
 				<h1>
-					Read more about SAAC
+					Meeting Agendas and Announcements
 				</h1>
 			</div> <!--End of banner div-->
 			
@@ -30,76 +29,53 @@
 
 		<div class="page_body"> <!--Photo Gallery-->
 			<div class="container">
-				<?php
-					if (isset($_SESSION['admin_user'])) {
-						//display rich text form
-						echo '
-							
-								<div class="forms">
-					   				<div class="ze ie"></div>
-							   		<div id="controls">
-							    		<a id="bold" class="font-bold">
-							    		<button type="button">B</button>
-									    </a>&nbsp;&nbsp;&nbsp;
-									    <a id="italic" class="italic">
-									    <button type="button">I</button>
-									    </a>&nbsp;&nbsp;&nbsp;&nbsp;
-									    <a id="link" class="link">
-									    <button type="button">Link</button>
-									    </a>&nbsp;&nbsp;&nbsp;&nbsp;
-									    <select id="fonts" class="g-button">
-										    <option value="Times">Times</option>
-										    <option value="Arial">Arial</option>
-										    <option value="Comic Sans MS">Comic Sans MS</option>
-										    <option value="Courier New">Courier New</option>
-										    <option value="Monotype Corsiva">Monotype</option>
-							    		</select>
-							   		</div>
-							   		<iframe frameborder="0" id="textEditor"></iframe>
-									<textarea name="text" id="text" rows="6" cols="53"></textarea>
-									<input type="text" value="title" name="title" placeholder="Article Title">
-									<input type="text" value="author" name="author" placeholder="Author Name">
-									<input type="submit" value="submit" name="submit">
-								</div>';
-                        $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-                        if(isset($_POST['text']) && isset($_POST['submit'])){
-                            $title = $_POST['title'];
-							$author = $_POST['author'];
-							$articlePost = $_POST['text'];
-							$publishArticle = $mysqli->query("INSERT INTO articles (title, post, author) VALUES ('$title', '$author', '$articlePost'");
-						}elseif(isset($_POST['submit']) && !isset($_POST['text'])){
-							echo '<p id="welcome_p">Unfortunately, your post was not uploaded, please make sure to type something</a></p>';
-						}
-						$articles = $mysqli->query("SELECT * FROM articles");
-						$length = $mysqli->query("SELECT count(*) FROM articles");
-						$num = $length ->fetch_assoc();
-						if($num['count(*)'] <1){
-							echo '<p id="welcome_p">Unfortunately there are no articles to see</a></p>';
-						}else{
-							while ($poster = $articles -> fetch_assoc()) {
-								$title = $poster['title'];
-								$author = $poster['author'];
-								$articlePost = $poster['post'];
-								print("<div><h3>$title</h3><br><h4>By $author</h4><br><p>$articlePost</p></div>");
-							}
-						}
-					}else {
-						$mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-						$articles = $mysqli->query("SELECT * FROM articles");
-						$length = $mysqli->query("SELECT count(*) FROM articles");
-						$num = $length ->fetch_assoc();
-						if($num['count(*)'] <1){
-							echo '<p id="welcome_p">Unfortunately there are no articles to see. If you are an Admin, log in on the Members Page</a></p>';
-						}else{
-							while ($poster = $articles -> fetch_assoc()) {
-								$title = $poster['title'];
-								$author = $poster['author'];
-								$articlePost = $poster['post'];
-								print("<div><h3>$title</h3><br><h4>By $author</h4><br><p>$articlePost</p></div>");
-							}
-						}
-					}
-				?> 
+<h3>Links to Meeting Agendas</h3>
+    <!-- upload pdf files for agendas -->
+    <?php if(isset($_SESSION['admin_user'])){ ?>
+    <form method='post' enctype='multipart/form-data'>
+      <input type='file' id='meetingAgenda' name='agendaPDF'></p>
+      <input type='text' id='meetingDate' name='meetingDate' placeholder="0000/00/00"> Date of the Meeting (yyyy/mm/dd)</p>
+      <input type='submit' value='Upload Agenda' name='submit'></p>
+    </form>
+    <?php }?>
+
+    <!-- upload the file -->
+    <!-- -->
+    <?php
+    $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+      if(isset($_POST['meetingDate']) && isset($_POST['submit'])){
+        $date = preg_replace("([^0-9/])", "", $_POST['meetingDate']);
+        $date = date("Y-m-d", strtotime($date));
+        if(!file_exists($_FILES['agendaPDF']['tmp_name']) || !is_uploaded_file($_FILES['agendaPDF']['tmp_name'])) {
+          print("<p>No File Detected</p>");
+        }else{
+          $filePath = "";
+          $newAgenda = $_FILES['agendaPDF'];
+          if($newAgenda['error'] == 0){
+            $tempName = $newAgenda['tmp_name'];
+            $filePath = "agendas/$date.pdf";
+            move_uploaded_file($tempName, "$filePath");
+            $insert = $mysqli->query("INSERT INTO meetings(meetDate, agendaPath) VALUES ('$date', '$filePath')"); 
+            print("<p>Uploaded the file to the server folder successfully</p>");
+          }else{
+            print("<p>Error: The file was not uploaded.</p>");
+          }
+        }
+      }
+  
+      $pdfs = $mysqli->query("SELECT * FROM meetings ORDER BY meetDate DESC");
+      $checker = false;
+      while($display = $pdfs->fetch_assoc()){
+        $checker = true;
+        $filePath = $display['agendaPath'];
+        $dateMeeting = $display['meetDate'];
+        $link = "<a href=\"$filePath\" target=\"_blank\"> $dateMeeting Meeting Agenda </a>";
+        print("<div class='forms'>$link</div>");
+      }
+      if ($checker === false) {
+        print("<div class='forms'>Sorry, No Agendas To Show</div>");
+      }
+    ?> 
 		    </div>  <!-- End of gallery_container div -->  	   
 			
 		</div> <!-- End of page_body div -->
