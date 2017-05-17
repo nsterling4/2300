@@ -16,7 +16,7 @@
 			<div class ="banner">
                 <?php include 'includes/banner.php'; ?>
                 <h1>
-					Your One Stop Shop for Active Members
+					Meet our Many Members
 
 				</h1>
 
@@ -96,9 +96,9 @@
 				                    <td> <input type='checkbox' name='remove[]' value='$memberID'> Remove Member?</td>
 				                </tr>
 				            </table>");
-		    			print("</div>");
 			    	}
 			    	print("<input type='submit' name='submit' value='Submit'>");
+			    	print("</div>");
 		    			//update attendance and/or remove members
 	    			
 

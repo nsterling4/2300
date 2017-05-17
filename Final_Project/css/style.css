@@ -83,6 +83,7 @@ footer p {
    
 
 form {
+    text-align: center;
     margin: auto;
     display: table;
     padding: 20px;
