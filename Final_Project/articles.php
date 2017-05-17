@@ -61,12 +61,12 @@
 									<input type="text" value="author" name="author" placeholder="Author Name">
 									<input type="submit" value="submit" name="submit">
 								</div>';
-						$mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-						if(isset($_POST['text']) && isset($_POST['submit'])){
-							$title = $_POST['title'];
+                        $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+                        if(isset($_POST['text']) && isset($_POST['submit'])){
+                            $title = $_POST['title'];
 							$author = $_POST['author'];
 							$articlePost = $_POST['text'];
-							$publishArticle = $mysqli->query("INSERT INTO articles(articleID, title, post, author) VALUES ('', $title, '$author', '$articlePost'");
+							$publishArticle = $mysqli->query("INSERT INTO articles (title, post, author) VALUES ('$title', '$author', '$articlePost'");
 						}elseif(isset($_POST['submit']) && !isset($_POST['text'])){
 							echo '<p id="welcome_p">Unfortunately, your post was not uploaded, please make sure to type something</a></p>';
 						}
