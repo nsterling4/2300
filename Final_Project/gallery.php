@@ -21,8 +21,34 @@
 			</div> <!--End of banner div-->
 			
 
-			<?php
-    	  		include 'includes/navbar.php';
+            <?php
+            include 'includes/navbar.php';
+            if (isset($_POST["addathlete"]) && !empty( $_FILES[ 'newphoto' ] ) ) {
+                $newPhoto = $_FILES[ 'newphoto' ];
+                $originalName = $newPhoto['name'];
+                if ( $newPhoto['error'] == 0 ) {
+                    $tempName = $newPhoto['tmp_name'];
+                    move_uploaded_file( $tempName, "images/$originalName");
+                    $_SESSION['photos'][] = $originalName;
+                    print("The file $originalName was uploaded successfully.\n");
+     
+
+            
+                    $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+                    //fetching the data
+                    $title = $_POST["title"];
+                    $caption = $_POST["caption"];        
+                    $credit = $_POST["credit"];
+                    $desc = $_POST["description"];
+                    $path = "images/$originalName";
+                    $mysqli->query("INSERT INTO photos (title, picPath, description, credit) VALUES ('$title', '$path', '$desc', '$credit')");
+                    /**if(!empty($_POST["Albums"])) {
+                        foreach($_POST["Albums"] as $check) {
+                            $mysqli->query("INSERT INTO AthletesinAlbums (album, athleteID) VALUES ('$check', (SELECT athleteID FROM Athletes WHERE Name = '$name'))");
+                        }
+                    }**/
+                }
+            }
     		?> 
     	</div> <!-- End of top_bar div -->
 
@@ -30,19 +56,33 @@
 			<div id="gallery_thumbnails">
 			<!-- display a thumbnail for each album -->
 				<?php
-					include 'includes/albumDisplayThumbnails.php';
+					//include 'includes/albumDisplayThumbnails.php';
 				?>
 			</div>
 			<div id="imageDisplay">
 			<!-- if a photo was selected -->
 				<?php
-					include 'includes/photoSelect.php';
+					//include 'includes/photoSelect.php';
 				?>
 			</div>
 			<div class="container">
 			<?php
 				if (isset($_SESSION['valid_user'])) {
-					echo '<p id="welcome_p">You are currently logged in. Unfortunately this page is still in construction, please try again later.</p>';
+                    echo '
+                    <form method="post" enctype="multipart/form-data">
+                    <label>Photo Title:</label> 
+                    <input type="text" name="title" required>
+                    <br>
+                    <label>Caption:</label>
+                    <input type="text" name="caption" required> 
+                    <br>
+                    <label>Credit:</label>
+                    <input type="text" name="credit" required>
+                    <br>
+                    <label>File Upload:</label>
+                    <input name="newphoto" type="file" required>
+                    <br> <input value="Submit Photo!" type="submit" name="submitpic">
+                    </form>';
 				}
 				else {
 					echo '<p id="welcome_p">This page is still in construction. For more features please <a href="login.php">Login</a></p>';
@@ -51,20 +91,7 @@
 		    </div>  <!-- End of gallery_container div -->  	   
 			<!-- 
             -->
-            <form method="post" enctype="multipart/form-data">
-                <label>Photo Name:</label> 
-                <input type="text" name="pName" required>
-                <br>
-                <label>Caption:</label>
-                <input type="text" name="caption"> 
-                <br>
-                <label>Credit:</label>
-                <input type="text" name="credit">
-                <br>
-                <label>File Upload:</label>
-                <input name="newphoto" type="file">
-            </form>
-		</div>
+            
 		</div> <!-- End of page_body div -->
 
 
