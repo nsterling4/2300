@@ -96,14 +96,14 @@
     ?>
 
     <?php
-      // $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-      // $pdfs = $mysqli->query("SELECT * FROM meetings");
-      // while($display = $pdfs->fetch_assoc()){
-      //   $filePath = $display['agendaPath'];
-      //   $dateMeeting = $display['date'];
-      //   $link = "<a href=\"$filePath.pdf\" target=\"_blank\"> $dateMeeting Meeting Agenda </a>";
-      //   print("$link");
-      // }
+      $mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+      $pdfs = $mysqli->query("SELECT * FROM meetings");
+      while($display = $pdfs->fetch_assoc()){
+        $filePath = $display['agendaPath'];
+        $dateMeeting = $display['date'];
+        $link = "<a href=\"$filePath.pdf\" target=\"_blank\"> $dateMeeting Meeting Agenda </a>";
+        print("$link");
+      }
     ?>
         
 
