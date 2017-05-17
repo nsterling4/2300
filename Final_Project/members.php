@@ -52,29 +52,33 @@
 
 			   	//if admin logged in
 				if (isset($_SESSION['admin_user'])) {
+					//if any members were selected for deleting or attendance
                     if(isset($_POST["option"]) || isset($_POST["remove"]) && isset($_POST["submit"])){
+                    	//if members were choosen for attendance
 		    			if(!empty($_POST["option"])){
 		    				$selected = $_POST["option"];
+		    				//check to see if today is actually a valid meeting to check attendance for
 		    				$meetValid = $mysqli->query("SELECT * FROM meetings WHERE meetDate = CURRENT_DATE");
 		    				if(!empty($meetValid)){
+		    					//if valid, go through each member selected and increase their tracked attendance number and create an entry for what meeting they have attended
 			    				foreach ($selected as $attended) {
+
+			    					//meetingAttend code isn't working
 			    					$meetingAttend = $mysqli->query("INSERT INTO meeting_attend(meetDate, memberID) VALUES (CURRENT_DATE, '$attended'");
+			    					//increase works
 			    					$increase = $mysqli->query("UPDATE members SET number_attend = number_attend +1 WHERE members.memberID = $attended");
 			    				}
 			    				print("<div class='forms'>Attendance has been taken</div>");
 			    			}else{
 			    				print("<div class='forms'>Please Create A Meeting For Today Before Taking Attendance</div>");
 			    			}
-		    			}if(!empty($_POST["remove"])){
-		    				$removeList = $_POST["remove"];
-		    				print("<div class='forms'>Are you sure you want to delete these members? <br>
-		    					<input type='submit' name='imsure' value='I Am Sure'>");
-		    				if(isset($_POST["imsure"])){
-		    					foreach ($removeList as $r) {
-		    						$delete = $mysqli->query("DELETE FROM members WHERE members.memberID = '$r'");
-		    					}
-		    				}
 		    			}
+		    			//if members were selected to be removed
+		    			if(!empty($_POST["remove"])){
+		    				//this code isn't working, even when it's here. Displays confirmation then after selecting an option, does nothing
+		    				include 'includes/removeMemHelp.php';
+		    			}
+		    			
 	    			}
                     include 'addMemForm.php';
 						
