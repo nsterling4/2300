@@ -50,6 +50,24 @@
     			$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 			    $member = $mysqli->query("SELECT DISTINCT memberID, first_name, last_name, sport, class, photoID FROM members");
 
+			    if(isset($_POST["REMOVE"])){
+			    	echo($_SESSION['removeArray'][0]);
+			    	// unset($_SESSION['removeArray']);
+					$removeList = $_SESSION["removeArray"];
+					foreach ($removeList as $r) {
+						$delete = $mysqli->query("DELETE FROM members WHERE members.memberID = $r");
+					}
+					print("<div class='forms'>Members Selected Have Been Removed</div>");
+					unset($_SESSION['removeArray']);
+
+				}
+
+				$member = $mysqli->query("SELECT DISTINCT memberID, first_name, last_name, sport, class, photoID FROM members");
+				
+				if(isset($_POST["CANCEL"])){
+					print("<div class='forms'>Members Have Been Unselected</div>");
+				}
+
 			   	//if admin logged in
 				if (isset($_SESSION['admin_user'])) {
 					//if any members were selected for deleting or attendance
@@ -59,6 +77,11 @@
 		    				$selected = $_POST["option"];
 		    				//check to see if today is actually a valid meeting to check attendance for
 		    				$meetValid = $mysqli->query("SELECT * FROM meetings WHERE meetDate = CURRENT_DATE");
+		    				while ($test = $meetValid->fetch_assoc()) {
+		    					echo 'fuck';
+		    					echo $test['meetDate'];
+		    				}
+		    				
 		    				if(!empty($meetValid)){
 		    					//if valid, go through each member selected and increase their tracked attendance number and create an entry for what meeting they have attended
 			    				foreach ($selected as $attended) {
@@ -70,7 +93,7 @@
 			    				}
 			    				print("<div class='forms'>Attendance has been taken</div>");
 			    			}else{
-			    				print("<div class='forms'>Please Create A Meeting For Today Before Taking Attendance</div>");
+			    				print("<div class='forms'>Please Create A Meeting For Today On The Home Page Before Taking Attendance</div>");
 			    			}
 		    			}
 		    			//if members were selected to be removed
